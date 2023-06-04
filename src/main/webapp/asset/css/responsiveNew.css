@@ -1,0 +1,113 @@
+/* PC */
+@media (min-width: 1024px) {
+
+}
+
+/* tablet */
+@media (max-width: 1023px) and (min-width: 740px) {
+    .content-main {
+        max-width: 100%;
+        padding-left: 0px;
+        margin-right: 0px;
+    }
+}
+
+/* mobile */
+@media (max-width: 740px) {
+    /* chuyển navbar xuống bottom hiện navmobi*/
+    .header {
+        height: 50px;
+    }
+    .header__navbar-logo__link {
+        position: relative;
+        left: -15px;
+    }
+    .header__navbar-search {
+        display: none;
+    }
+
+    .header__navbar-list {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        justify-content: space-evenly;
+        background-color: #fff;
+        height: 50px;
+        align-items: center;
+        border-top: 1px solid var(--b6a);
+    }
+    .header__navbar-item:nth-of-type(2),
+    .header__navbar-item:nth-of-type(3) {
+        display: block;
+    }
+
+    .border-img {
+        position:relative;
+        top: -3px;
+    }
+    .header__navbar-mobile {
+        display: block;
+    }
+
+    /* hiện footer tag + chỉnh khoảng cách section*/
+    .content {
+        display: block;
+        padding-top: 38px;
+    }
+    .content-main {
+        max-width: 100%;
+        padding-left: 0px;
+        margin-right:0px ;
+    }
+    .slider {
+        margin-top: 0px;
+        margin-bottom: 0px;
+        border-radius:0px;
+        border: none;
+        border-bottom: 0px solid var(--b6a);
+    }
+    .content-main__wrapper {
+        margin-bottom: 0px;
+        border: 0px solid var(--b6a) ;
+        border-radius: 0;
+        padding-bottom: 5px;
+        padding-left: 0px;
+    }
+    .about-time {
+        margin-bottom: -5px;
+    }
+    .ava-acc-cmt {
+        display: block;
+    }
+    .about-input {
+        border-top: 0px solid rgb(239 239 239 / 76%);
+    }
+    .content-right {
+        max-width: 620px;
+        position: static;
+        padding-bottom: 20px;
+    }
+    .content-right__account, .content-right__suggestions {
+        display: none;
+    }
+    .content-right__footer {
+        display: flex;
+        justify-content: center;
+    }
+    .content-right__footer-list,
+    .content-right__footer-bottom {
+        width: 100%;
+        text-align: center;
+    }
+
+    .dot-notify::after {
+        top: -6px;
+        right: -3px;
+    }
+    /* -----để class để xóa  */
+    .isnone {
+        display: none;
+    }
+}

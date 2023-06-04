@@ -1,0 +1,45 @@
+* {
+    box-sizing: inherit;
+}
+html {
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 62.5%;
+    line-height: 1.6rem;
+    background-color: var(--d87);
+}
+
+.grid {
+    justify-content: center;
+    max-width: 100%;
+    display: flex;
+}
+.grid-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+.grid-column-2 {
+    width: 50%;
+}
+
+.btn {
+    font-size: 1.6rem;
+    outline: none;
+    border: none;
+    list-style: none;
+    text-decoration: none;
+    background-color: transparent;
+    line-height: 1.6rem;
+    padding: 0;
+    cursor: pointer;
+}
+
+.pr-12 {
+    padding: 0 12px 0;
+}
+.mb-4 {
+    margin-bottom: 4px;
+}
+.mt-16 {
+    margin-top: 16px;
+}
