@@ -14,8 +14,8 @@
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="icon" href="./asset/img/favicon.png">
-    <link rel="stylesheet" href="./asset/css/login.css">
+    <link rel="icon" href="../asset/img/favicon.png">
+    <link rel="stylesheet" href="../asset/css/login.css">
 
 </head>
 <body>
@@ -24,27 +24,27 @@
         <div class="header__inner">
             <div class="header__inner__img">
                 <div class="header__inner__img_inner">
-                    <img src="asset/img/Screenshot%202023-06-03%20125133.png"
+                    <img src="../asset/img/Screenshot%202023-06-03%20125133.png"
                          style=" width: 430px; height: 580px;">
                 </div>
             </div>
             <div class="header__inner__form">
                 <div class="header__inner__form-login">
                     <div class="header__inner__form-login-logo">
-                        <img src="asset/img/logo.png"
+                        <img src="../asset/img/logo.png"
                              style=" width: 170px; height: 50px;">
                     </div>
                     <div class="header__inner__form-inner">
-                        <form action="" method="post">
+                        <form action="/login?action=login" method="post">
                             <div class="form-inner">
                                 <div class="form-inner-1">
-                                    <input type="text" placeholder="Enter your account here" id="userName">
+                                    <input type="text" placeholder="Enter your account here" id="userName" name="userName">
                                 </div>
                             </div>
 
                             <div class="form-inner">
                                 <div class="form-inner-1">
-                                    <input type="password" placeholder="Enter your password here" id="passWord">
+                                    <input type="password" placeholder="Enter your password here" id="passWord" name="passWord">
                                 </div>
                             </div>
 
@@ -74,12 +74,12 @@
                     </div>
                 </div>
                 <div class="header__inner__form-register">
-                    <p>You don't have an account yet? <a href="register.jsp"> Register here</a></p>
+                    <p>You don't have an account yet? <a href="/user?action=create"> Register here</a></p>
                 </div>
                 <div class="header__inner__form-pr">
                     <div class="form-pr-text">Get the app.</div>
                     <div class="form-pr-img">
-                        <img src="asset/img/Screenshot%202023-06-03%20142005.png" style="width: 250px;height: 65px">
+                        <img src="../asset/img/Screenshot%202023-06-03%20142005.png" style="width: 250px;height: 65px">
                     </div>
                 </div>
             </div>
@@ -87,7 +87,7 @@
     </div>
     <div class="footer">
         <div>
-            <img src="asset/img/footer.png">
+            <img src="../asset/img/footer.png">
         </div>
     </div>
 </div>

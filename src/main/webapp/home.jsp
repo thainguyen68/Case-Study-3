@@ -24,7 +24,7 @@
     <header class="header">
         <nav class="header__navbar">
             <div class="header__navbar-logo">
-                <a href="" class="header__navbar-logo__link">
+                <a href="/home" class="header__navbar-logo__link">
                     <div class="header__navbar-logo-img">
                         <img src="./asset/img/instagram-text.svg" alt="">
                     </div>
@@ -251,7 +251,9 @@
                  <%-----------------------------------Ở ĐÂY XỬ LÝ PẦN LOG-OUT---------------------------------------------------------%>
 
                                     <div class="accountfolder-about__logOut">
-                                        <div class="accountfolder-about__logOut-inner">Log Out</div>
+                                        <div class="accountfolder-about__logOut-inner">
+                                            <a style="text-decoration: none; color: #8c4343" href="/login">Log Out</a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

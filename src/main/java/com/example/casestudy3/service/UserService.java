@@ -25,19 +25,26 @@ public class UserService {
     }
 
     public List<User> displayInfo() {
-        return userDAO.displayInfo();
+        return userDAO.findAll();
     }
 
-    public void addUser(HttpServletRequest request) {
+
+    public void save(HttpServletRequest request) {
+        String id = request.getParameter("id");
         String avatar = request.getParameter("avatar");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
         String numberPhone = request.getParameter("numberPhone");
         LocalDate date = LocalDate.parse(request.getParameter("date"));
-        String address = request.getParameter("address");
         String favorite = request.getParameter("favorite");
-        userDAO.addUser(new User(avatar, username, password, fullName, numberPhone, date, favorite, address));
+        String address = request.getParameter("address");
+        if (id != null) {
+            int idUpdate = Integer.parseInt(id);
+            userDAO.updateInfo(new User(idUpdate,avatar, username, password, fullName, numberPhone, date, favorite, address));
+        } else {
+           userDAO.addUser(new User(avatar, username, password, fullName, numberPhone, date, favorite, address));
+        }
     }
 
     public void updatePassword(HttpServletRequest request) {
@@ -46,17 +53,12 @@ public class UserService {
         userDAO.editPassWord(new User(id,password));
     }
 
-    public void updateInfo(HttpServletRequest request){
-        int id = Integer.parseInt(request.getParameter("id"));
-        String avatar = request.getParameter("avatar");
-        String fullName = request.getParameter("fullName");
-        String date = request.getParameter("date");
-        LocalDate datOfBirth = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
-        String address = request.getParameter("address");
-        String numberPhone = request.getParameter("numberPhone");
-        String favorite = request.getParameter("favorite");
-        userDAO.updateInfo(new User(avatar,fullName,datOfBirth,numberPhone,favorite,address));
+
+    public User getById(int id) {
+        return userDAO.findById(id);
     }
-
-
+    public boolean checkById(int id) {
+        User user = userDAO.findById(id);
+        return user != null;
+    }
 }
