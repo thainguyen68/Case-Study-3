@@ -2,7 +2,10 @@ package com.example.casestudy3.model;
 
 import java.sql.Date;
 import java.time.LocalDate;
+<<<<<<< HEAD
 import java.time.LocalDateTime;
+=======
+>>>>>>> post
 
 public class User {
     private int id;
@@ -53,8 +56,13 @@ public class User {
         this.address = address;
     }
 
+<<<<<<< HEAD
     public User( int id,String password) {
         this.id=id;
+=======
+    public User(int id, String password) {
+        this.id = id;
+>>>>>>> post
         this.password = password;
     }
 
@@ -130,4 +138,3 @@ public class User {
         this.address = address;
     }
 }
-

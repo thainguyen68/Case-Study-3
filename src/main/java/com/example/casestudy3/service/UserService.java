@@ -1,12 +1,18 @@
 package com.example.casestudy3.service;
 
 import com.example.casestudy3.DAO.UserDAO;
+<<<<<<< HEAD
 import com.example.casestudy3.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+=======
+import com.example.casestudy3.model.Posts;
+import com.example.casestudy3.model.User;
+
+>>>>>>> post
 import java.util.List;
 
 public class UserService {
@@ -23,6 +29,7 @@ public class UserService {
         }
         return userService;
     }
+<<<<<<< HEAD
 
     public List<User> displayInfo() {
         return userDAO.displayInfo();
@@ -59,4 +66,16 @@ public class UserService {
     }
 
 
+=======
+    public User getById(int id) {
+        return userDAO.findById(id);
+    }
+    public List<User> getUser() {
+        return userDAO.findAll();
+    }
+    public boolean checkById(int id) {
+        User user = userDAO.findById(id);
+        return user != null;
+    }
+>>>>>>> post
 }

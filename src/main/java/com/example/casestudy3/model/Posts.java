@@ -31,6 +31,13 @@ public class Posts {
         this.likeCount = likeCount;
     }
 
+    public Posts(User user, String content, String img_url, int likeCount) {
+        this.user = user;
+        this.content = content;
+        this.img_url = img_url;
+        this.likeCount = likeCount;
+    }
+
     public int getId() {
         return id;
     }
