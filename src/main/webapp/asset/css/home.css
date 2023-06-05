@@ -76,7 +76,7 @@ html {
     padding: 0 20px;
 }
 .header__navbar-logo {
-    flex: 1 9999 0%;
+    flex: 1 9999 0;
     min-width: 40px;
     display: flex;
 }
@@ -338,10 +338,7 @@ html {
     z-index: 2;
 }
 
-/* ------------ */
 
-
-/* ------------ */
 .notifies-on-off {
     display: none;
 }

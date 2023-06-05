@@ -1,8 +1,6 @@
 package com.example.casestudy3.model;
 
-import java.sql.Date;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 public class User {
     private int id;

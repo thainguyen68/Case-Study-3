@@ -7,11 +7,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
-import com.example.casestudy3.model.Posts;
-import com.example.casestudy3.model.User;
-
-
 import java.util.List;
 
 public class UserService {
@@ -29,46 +24,45 @@ public class UserService {
         return userService;
     }
 
-
-    public List<User> displayInfo() {
-        return userDAO.displayInfo();
+    public User displayInfo(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        return userDAO.findById(id);
     }
 
-    public User getById(int id) {
-        return userDAO.displayById(id);
+    public List<User> findAllI(){
+        return userDAO.findAll();
     }
 
-    public void addUser(HttpServletRequest request) {
+    public void save(HttpServletRequest request) {
+        String id = request.getParameter("id");
         String avatar = request.getParameter("avatar");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
         String numberPhone = request.getParameter("numberPhone");
-        String date = request.getParameter("regDOB");
-        LocalDate DOB = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
-        String address = request.getParameter("address");
+        LocalDate date = LocalDate.parse(request.getParameter("dateOfBirth"));
         String favorite = request.getParameter("favorite");
-        userDAO.addUser(new User(avatar, username, password, fullName, numberPhone, DOB, favorite, address));
+        String address = request.getParameter("address");
+        if (id != null) {
+            int idUpdate = Integer.parseInt(id);
+            userDAO.updateInfo(new User(idUpdate,avatar, username, password, fullName, numberPhone, date, favorite, address));
+        } else {
+           userDAO.addUser(new User(avatar, username, password, fullName, numberPhone, date, favorite, address));
+        }
     }
 
     public void updatePassword(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        String password = request.getParameter("password");
-        userDAO.editPassWord(new User(id, password));
-    }
-
-    public void updateInfo(HttpServletRequest request) {
-        int id = Integer.parseInt(request.getParameter("id"));
-        String avatar = request.getParameter("avatar");
-        String fullName = request.getParameter("fullName");
-        String date = request.getParameter("regDOB");
-        LocalDate DOB = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
-        String address = request.getParameter("address");
-        String numberPhone = request.getParameter("numberPhone");
-        String favorite = request.getParameter("favorite");
-        userDAO.updateInfo(new User(avatar, fullName, DOB, numberPhone, favorite, address));
+        String password =request.getParameter("password");
+        userDAO.editPassWord(new User(id,password));
     }
 
 
-
+    public User getById(int id) {
+        return userDAO.findById(id);
+    }
+    public boolean checkById(int id) {
+        User user = userDAO.findById(id);
+        return user != null;
+    }
 }
