@@ -44,10 +44,11 @@ public class UserService {
         String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
         String numberPhone = request.getParameter("numberPhone");
-        LocalDate date = LocalDate.parse(request.getParameter("date"));
+        String date = request.getParameter("regDOB");
+        LocalDate DOB = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
         String address = request.getParameter("address");
         String favorite = request.getParameter("favorite");
-        userDAO.addUser(new User(avatar, username, password, fullName, numberPhone, date, favorite, address));
+        userDAO.addUser(new User(avatar, username, password, fullName, numberPhone, DOB, favorite, address));
     }
 
     public void updatePassword(HttpServletRequest request) {
@@ -60,11 +61,12 @@ public class UserService {
         int id = Integer.parseInt(request.getParameter("id"));
         String avatar = request.getParameter("avatar");
         String fullName = request.getParameter("fullName");
-        LocalDate date = LocalDate.parse(request.getParameter("date"));
+        String date = request.getParameter("regDOB");
+        LocalDate DOB = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
         String address = request.getParameter("address");
         String numberPhone = request.getParameter("numberPhone");
         String favorite = request.getParameter("favorite");
-        userDAO.updateInfo(new User(avatar, fullName, date, numberPhone, favorite, address));
+        userDAO.updateInfo(new User(avatar, fullName, DOB, numberPhone, favorite, address));
     }
 
 
