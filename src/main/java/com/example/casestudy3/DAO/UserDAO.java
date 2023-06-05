@@ -86,4 +86,24 @@ public class UserDAO {
         }
     }
 
+    public User displayById(int id) {
+        User user = null;
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_ID)){
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String avatar = resultSet.getString("avatar");
+                String fullName = resultSet.getString("full_name");
+                LocalDate dateOfBirth = resultSet.getDate("date_of_birth").toLocalDate();
+                String address = resultSet.getString("address");
+                String numberPhone = resultSet.getString("numberPhone");
+                String favorite = resultSet.getString("favorite");
+                user =new User( id,avatar, fullName, dateOfBirth, numberPhone, favorite, address);
+            }
+        }catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return user;
+    }
+
 }
