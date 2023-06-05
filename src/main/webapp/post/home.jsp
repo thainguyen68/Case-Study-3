@@ -16,9 +16,9 @@
     <c:forEach items="post" var="p">
         <tr>${p.id}</tr>
         <tr>${p.user.getFullName}</tr>
-        <tr>${p.id}</tr>
-        <tr>${p.id}</tr>
-        <tr>${p.id}</tr>
+        <tr>${p.content}</tr>
+        <tr>${p.img_url}</tr>
+        <tr>${p.likecount}</tr>
     </c:forEach>
 </table>
 </body>
