@@ -12,6 +12,14 @@
     <title>Title</title>
 </head>
 <body>
-
+<table>
+    <c:forEach items="post" var="p">
+        <tr>${p.id}</tr>
+        <tr>${p.user.getFullName}</tr>
+        <tr>${p.id}</tr>
+        <tr>${p.id}</tr>
+        <tr>${p.id}</tr>
+    </c:forEach>
+</table>
 </body>
 </html>

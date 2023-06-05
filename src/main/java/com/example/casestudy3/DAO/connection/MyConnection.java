@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class MyConnection {
-    private static final String jdbcURL = "jdbc:mysql://localhost:3306/product?useSSL=false";
+    private static final String jdbcURL = "jdbc:mysql://localhost:3306/social_networks?useSSL=false";
 
     private static final String jdbcUsername = "root";
 

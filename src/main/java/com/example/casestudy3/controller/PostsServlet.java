@@ -2,6 +2,7 @@ package com.example.casestudy3.controller;
 
 import com.example.casestudy3.service.CommentService;
 import com.example.casestudy3.service.PostsService;
+import com.example.casestudy3.service.UserService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,6 +13,8 @@ import java.io.IOException;
 public class PostsServlet extends HttpServlet {
     private final PostsService postsService = PostsService.getInstance();
     private final CommentService commentService = CommentService.getInstance();
+    private final UserService userService = UserService.getInstance();
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         if (action == null) {
@@ -53,13 +56,13 @@ public class PostsServlet extends HttpServlet {
         requestDispatcher.forward(request, response);
     }
     private void createGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("comment", commentService.getComment());
+        request.setAttribute("user", userService.getUser());
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/post/create.jsp");
         requestDispatcher.forward(request, response);
     }
     private void createPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int commentId = Integer.parseInt(request.getParameter("comment"));
-        if (commentService.checkById(commentId)) {
+        int userId = Integer.parseInt(request.getParameter("user"));
+        if (userService.checkById(userId)) {
             postsService.save(request);
             response.sendRedirect("/posts");
         }
@@ -70,7 +73,7 @@ public class PostsServlet extends HttpServlet {
         if (postsService.checkById(id)) {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/post/update.jsp");
             request.setAttribute("post", postsService.getById(id));
-            request.setAttribute("comment", commentService.getComment());
+            request.setAttribute("user",userService.getUser());
             requestDispatcher.forward(request, response);
         }
     }
@@ -78,7 +81,8 @@ public class PostsServlet extends HttpServlet {
     private void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int postId = Integer.parseInt(request.getParameter("post"));
         int commentId = Integer.parseInt(request.getParameter("comment"));
-        if (postsService.checkById(postId) && commentService.checkById(commentId)) {
+        int userId = Integer.parseInt(request.getParameter("user"));
+        if (postsService.checkById(postId) && userService.checkById(userId)) {
             postsService.save(request);
             response.sendRedirect("/posts");
         }

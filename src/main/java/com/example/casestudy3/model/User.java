@@ -1,6 +1,7 @@
 package com.example.casestudy3.model;
 
 import java.sql.Date;
+import java.time.LocalDate;
 
 public class User {
     private int id;
@@ -9,30 +10,16 @@ public class User {
     private String password;
     private String fullName;
     private String numberPhone;
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String favorite;
     private String address;
 
     public User() {
     }
 
-    public User(String username, String password, String numberPhone, Date date_of_birth) {
-        this.username = username;
-        this.password = password;
-        this.numberPhone = numberPhone;
-        this.dateOfBirth = date_of_birth;
-    }
-
-    public User(int id, String username, String password, String numberPhone, Date date_of_birth) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.numberPhone = numberPhone;
-        this.dateOfBirth = date_of_birth;
-    }
 
     public User(int id, String avatar, String username, String password, String fullName,
-                String numberPhone, Date dateOfBirth, String favorite, String address) {
+                String numberPhone, LocalDate dateOfBirth, String favorite, String address) {
         this.id = id;
         this.avatar = avatar;
         this.username = username;
@@ -45,7 +32,7 @@ public class User {
     }
 
     public User(String avatar, String username, String password,
-                String fullName, String numberPhone, Date dateOfBirth, String favorite, String address) {
+                String fullName, String numberPhone, LocalDate dateOfBirth, String favorite, String address) {
         this.avatar = avatar;
         this.username = username;
         this.password = password;
@@ -54,6 +41,20 @@ public class User {
         this.dateOfBirth = dateOfBirth;
         this.favorite = favorite;
         this.address = address;
+    }
+
+    public User(String avatar, String fullName, LocalDate dateOfBirth, String numberPhone, String favorite, String address) {
+        this.avatar = avatar;
+        this.fullName = fullName;
+        this.numberPhone = numberPhone;
+        this.dateOfBirth = dateOfBirth;
+        this.favorite = favorite;
+        this.address = address;
+    }
+
+    public User(int id, String password) {
+        this.id = id;
+        this.password = password;
     }
 
     public int getId() {
@@ -88,11 +89,11 @@ public class User {
         this.numberPhone = numberPhone;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date date_of_birth) {
+    public void setDateOfBirth(LocalDate date_of_birth) {
         this.dateOfBirth = date_of_birth;
     }
 
@@ -128,4 +129,3 @@ public class User {
         this.address = address;
     }
 }
-

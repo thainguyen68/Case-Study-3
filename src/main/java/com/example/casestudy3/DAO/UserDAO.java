@@ -3,8 +3,13 @@ package com.example.casestudy3.DAO;
 import com.example.casestudy3.DAO.connection.MyConnection;
 import com.example.casestudy3.model.User;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.sql.Date;
 import java.util.List;
 
 public class UserDAO {
@@ -39,7 +44,7 @@ public class UserDAO {
                 String password = resultSet.getString("password");
                 String fullName = resultSet.getString("fullname");
                 String numberPhone = resultSet.getString("numberPhone");
-                Date dateOfBirth = resultSet.getDate("dateofbirth");
+                LocalDate dateOfBirth = resultSet.getDate("dateofbirth").toLocalDate();
                 String favorite = resultSet.getString("favorite");
                 String address = resultSet.getString("address");
                 user = new User(avatar,username,password,fullName,numberPhone,dateOfBirth,favorite,address);
@@ -57,7 +62,7 @@ public class UserDAO {
             String password = resultSet.getString("password");
             String fullName = resultSet.getString("fullname");
             String numberPhone = resultSet.getString("numberPhone");
-            Date dateOfBirth = resultSet.getDate("dateofbirth");
+            LocalDate dateOfBirth = resultSet.getDate("dateofbirth").toLocalDate();
             String favorite = resultSet.getString("favorite");
             String address = resultSet.getString("address");
             User user = new User(avatar,username,password,fullName,numberPhone,dateOfBirth,favorite,address);
@@ -70,7 +75,9 @@ public class UserDAO {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getNumberPhone());
-            preparedStatement.setDate(4, user.getDateOfBirth());
+            LocalDate dob = user.getDateOfBirth();
+            Date sqlDate = Date.valueOf(dob);
+            preparedStatement.setDate(6, sqlDate);
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -86,5 +93,4 @@ public class UserDAO {
             e.printStackTrace();
         }
     }
-
 }
