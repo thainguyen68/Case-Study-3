@@ -80,7 +80,6 @@ public class PostsServlet extends HttpServlet {
 
     private void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int postId = Integer.parseInt(request.getParameter("post"));
-        int commentId = Integer.parseInt(request.getParameter("comment"));
         int userId = Integer.parseInt(request.getParameter("user"));
         if (postsService.checkById(postId) && userService.checkById(userId)) {
             postsService.save(request);
