@@ -36,7 +36,7 @@ public class Login extends HttpServlet {
     private void loginPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("userName");
         String password = request.getParameter("passWord");
-        List<User> userList = userService.displayInfo();
+        List<User> userList = userService.findAllI();
         boolean check = false;
         for (User u : userList) {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {

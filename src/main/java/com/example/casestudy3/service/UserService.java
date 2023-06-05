@@ -24,10 +24,14 @@ public class UserService {
         return userService;
     }
 
-    public List<User> displayInfo() {
-        return userDAO.findAll();
+    public User displayInfo(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        return userDAO.findById(id);
     }
 
+    public List<User> findAllI(){
+        return userDAO.findAll();
+    }
 
     public void save(HttpServletRequest request) {
         String id = request.getParameter("id");
@@ -36,7 +40,7 @@ public class UserService {
         String password = request.getParameter("password");
         String fullName = request.getParameter("fullName");
         String numberPhone = request.getParameter("numberPhone");
-        LocalDate date = LocalDate.parse(request.getParameter("date"));
+        LocalDate date = LocalDate.parse(request.getParameter("dateOfBirth"));
         String favorite = request.getParameter("favorite");
         String address = request.getParameter("address");
         if (id != null) {

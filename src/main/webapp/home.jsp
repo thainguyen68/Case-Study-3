@@ -1,8 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<!DOCTYPE html>
-<html lang="en">
+
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -210,7 +210,9 @@
                                         </svg>
                                     </div>
                                     <div class="accountfolder-about-content">
-                                        <div class="accountfolder-about-content__Profile">Profile</div>
+                                        <div class="accountfolder-about-content__Profile">
+                                            <a style="text-decoration: none;color: #262626" href="/user?action=update&id=${user.id}">Profile</a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="accountfolder-about btn">
@@ -304,7 +306,6 @@
                         <div class="content-main__heading">
                             <header class="heading-inner">
                                 <div class="heading-inner__ava">
-
                                     <img src="./asset/img/ava.jpg" alt="" class="heading-inner__ava-img">
                                 </div>
                                 <div>thainguyenn__</div>
