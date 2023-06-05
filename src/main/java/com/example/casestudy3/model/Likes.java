@@ -2,6 +2,7 @@ package com.example.casestudy3.model;
 
 public class Likes {
     private int id ;
+
     private User user;
     private Posts posts;
 
@@ -14,10 +15,14 @@ public class Likes {
         this.posts = posts;
     }
 
-    public Likes(User user, Posts posts) {
+    public Likes(User user) {
         this.user = user;
-        this.posts = posts;
     }
+
+    public Likes(int id, int id1) {
+
+    }
+
 
     public int getId() {
         return id;

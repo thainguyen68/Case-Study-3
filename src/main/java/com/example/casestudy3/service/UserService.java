@@ -1,18 +1,17 @@
 package com.example.casestudy3.service;
 
 import com.example.casestudy3.DAO.UserDAO;
-<<<<<<< HEAD
 import com.example.casestudy3.model.User;
 
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-=======
+
 import com.example.casestudy3.model.Posts;
 import com.example.casestudy3.model.User;
 
->>>>>>> post
+
 import java.util.List;
 
 public class UserService {
@@ -29,10 +28,14 @@ public class UserService {
         }
         return userService;
     }
-<<<<<<< HEAD
+
 
     public List<User> displayInfo() {
         return userDAO.displayInfo();
+    }
+
+    public User getById(int id) {
+        return userDAO.displayById(id);
     }
 
     public void addUser(HttpServletRequest request) {
@@ -49,33 +52,21 @@ public class UserService {
 
     public void updatePassword(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
-        String password =request.getParameter("password");
-        userDAO.editPassWord(new User(id,password));
+        String password = request.getParameter("password");
+        userDAO.editPassWord(new User(id, password));
     }
 
-    public void updateInfo(HttpServletRequest request){
+    public void updateInfo(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         String avatar = request.getParameter("avatar");
         String fullName = request.getParameter("fullName");
-        String date = request.getParameter("date");
-        LocalDate datOfBirth = LocalDate.parse(date, DateTimeFormatter.ISO_DATE);
+        LocalDate date = LocalDate.parse(request.getParameter("date"));
         String address = request.getParameter("address");
         String numberPhone = request.getParameter("numberPhone");
         String favorite = request.getParameter("favorite");
-        userDAO.updateInfo(new User(avatar,fullName,datOfBirth,numberPhone,favorite,address));
+        userDAO.updateInfo(new User(avatar, fullName, date, numberPhone, favorite, address));
     }
 
 
-=======
-    public User getById(int id) {
-        return userDAO.findById(id);
-    }
-    public List<User> getUser() {
-        return userDAO.findAll();
-    }
-    public boolean checkById(int id) {
-        User user = userDAO.findById(id);
-        return user != null;
-    }
->>>>>>> post
+
 }

@@ -58,6 +58,16 @@ public class User {
         this.password = password;
     }
 
+    public User(int id, String avatar, String fullName, LocalDate dateOfBirth, String numberPhone, String favorite, String address) {
+        this.id = id;
+        this.avatar = avatar;
+        this.fullName = fullName;
+        this.numberPhone = numberPhone;
+        this.dateOfBirth = dateOfBirth;
+        this.favorite = favorite;
+        this.address = address;
+    }
+
     public int getId() {
         return id;
     }

@@ -9,7 +9,15 @@ import java.io.IOException;
 public class LikesServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String action = request.getParameter("action");
+        if(action == null){
+            action = "";
+        }
+        switch (action){
+            case "like":
+                int userID = Integer.parseInt(request.getParameter("userId"));
+                int postID = Integer.parseInt(request.getParameter("postId"));
+        }
     }
 
     @Override
