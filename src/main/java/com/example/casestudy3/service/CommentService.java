@@ -26,7 +26,7 @@ public class CommentService {
         }
         return commentService;
     }
-    public List<Comment> getPost() {
+    public List<Comment> getComment() {
         return commentDAO.findAll();
     }
     public void save(HttpServletRequest request) {
