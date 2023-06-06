@@ -24,9 +24,9 @@
     <header class="header">
         <nav class="header__navbar">
             <div class="header__navbar-logo">
-                <a href="/home" class="header__navbar-logo__link">
+                <a href="/home?action&id=${user.id}" class="header__navbar-logo__link">
                     <div class="header__navbar-logo-img">
-                        <img src="./asset/img/instagram-text.svg" alt="">
+                        <img src="./asset/img/logo.png" alt="">
                     </div>
                 </a>
             </div>
@@ -50,7 +50,7 @@
 
             <ul class="header__navbar-list">
                 <li class="header__navbar-item">
-                    <a href="#" class="header__nabar-link">
+                    <a href="/home?id=${user.id}" class="header__nabar-link">
                         <svg aria-label="Home" class="_8-yf5 " color="#262626" fill="#262626" height="22" role="img"
                              viewBox="0 0 48 48" width="22">
                             <path d="M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z"></path>
@@ -62,17 +62,17 @@
                     </a>
                 </li>
                 <li class="header__navbar-item">
-                    <a href="" class="header__nabar-link">
-                        <img class="img-svg-search" src="./asset/img/icons8-search.svg" alt="">
+                    <a href="#" class="header__nabar-link">
+                        <img class="img-svg-search" src="./asset/img/search.png" alt="">
                     </a>
                 </li>
                 <li class="header__navbar-item">
-                    <a href="" class="header__nabar-link">
-                        <img class="img-svg-video" src="./asset/img/icons8-instagram-reels.svg" alt="">
+                    <a href="#" class="header__nabar-link">
+                        <img class="img-svg-video" src="./asset/img/video.png" alt="">
                     </a>
                 </li>
                 <li class="header__navbar-item isnone">
-                    <a href="" class="header__nabar-link dot-notify">
+                    <a href="#" class="header__nabar-link dot-notify">
                         <svg aria-label="Messenger" class="_8-yf5 " color="#262626" fill="#262626" height="22"
                              role="img" viewBox="0 0 48 48" width="22">
                             <path d="M36.2 16.7L29 22.2c-.5.4-1.2.4-1.7 0l-5.4-4c-1.6-1.2-3.9-.8-5 .9l-6.8 10.7c-.7 1 .6 2.2 1.6 1.5l7.3-5.5c.5-.4 1.2-.4 1.7 0l5.4 4c1.6 1.2 3.9.8 5-.9l6.8-10.7c.6-1.1-.7-2.2-1.7-1.5zM24 1C11 1 1 10.5 1 23.3 1 30 3.7 35.8 8.2 39.8c.4.3.6.8.6 1.3l.2 4.1c0 1 .9 1.8 1.8 1.8.2 0 .5 0 .7-.2l4.6-2c.2-.1.5-.2.7-.2.2 0 .3 0 .5.1 2.1.6 4.3.9 6.7.9 13 0 23-9.5 23-22.3S37 1 24 1zm0 41.6c-2 0-4-.3-5.9-.8-.4-.1-.8-.2-1.3-.2-.7 0-1.3.1-2 .4l-3 1.3V41c0-1.3-.6-2.5-1.6-3.4C6.2 34 4 28.9 4 23.3 4 12.3 12.6 4 24 4s20 8.3 20 19.3-8.6 19.3-20 19.3z"></path>
@@ -80,17 +80,15 @@
                     </a>
                 </li>
                 <li class="header__navbar-item isnone">
-                    <a href="" class="header__nabar-link">
+                    <a href="#" class="header__nabar-link">
                         <input type="checkbox" hidden class="newpost-on-off" id="newpost-on-off-id">
                         <label for="newpost-on-off-id" class="newpost-off">
-                            <a href="/posts?action=create">
-                                <svg aria-label="New Post" class="_8-yf5 " color="#262626" fill="#262626" height="22"
-                                     role="img" viewBox="0 0 48 48" width="22">
-                                    <path d="M31.8 48H16.2c-6.6 0-9.6-1.6-12.1-4C1.6 41.4 0 38.4 0 31.8V16.2C0 9.6 1.6 6.6 4 4.1 6.6 1.6 9.6 0 16.2 0h15.6c6.6 0 9.6 1.6 12.1 4C46.4 6.6 48 9.6 48 16.2v15.6c0 6.6-1.6 9.6-4 12.1-2.6 2.5-5.6 4.1-12.2 4.1zM16.2 3C10 3 7.8 4.6 6.1 6.2 4.6 7.8 3 10 3 16.2v15.6c0 6.2 1.6 8.4 3.2 10.1 1.6 1.6 3.8 3.1 10 3.1h15.6c6.2 0 8.4-1.6 10.1-3.2 1.6-1.6 3.1-3.8 3.1-10V16.2c0-6.2-1.6-8.4-3.2-10.1C40.2 4.6 38 3 31.8 3H16.2z"></path>
-                                    <path d="M36.3 25.5H11.7c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h24.6c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5z"></path>
-                                    <path d="M24 37.8c-.8 0-1.5-.7-1.5-1.5V11.7c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v24.6c0 .8-.7 1.5-1.5 1.5z"></path>
-                                </svg>
-                            </a>
+                            <svg aria-label="New Post" class="_8-yf5 " color="#262626" fill="#262626" height="22"
+                                 role="img" viewBox="0 0 48 48" width="22">
+                                <path d="M31.8 48H16.2c-6.6 0-9.6-1.6-12.1-4C1.6 41.4 0 38.4 0 31.8V16.2C0 9.6 1.6 6.6 4 4.1 6.6 1.6 9.6 0 16.2 0h15.6c6.6 0 9.6 1.6 12.1 4C46.4 6.6 48 9.6 48 16.2v15.6c0 6.6-1.6 9.6-4 12.1-2.6 2.5-5.6 4.1-12.2 4.1zM16.2 3C10 3 7.8 4.6 6.1 6.2 4.6 7.8 3 10 3 16.2v15.6c0 6.2 1.6 8.4 3.2 10.1 1.6 1.6 3.8 3.1 10 3.1h15.6c6.2 0 8.4-1.6 10.1-3.2 1.6-1.6 3.1-3.8 3.1-10V16.2c0-6.2-1.6-8.4-3.2-10.1C40.2 4.6 38 3 31.8 3H16.2z"></path>
+                                <path d="M36.3 25.5H11.7c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h24.6c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5z"></path>
+                                <path d="M24 37.8c-.8 0-1.5-.7-1.5-1.5V11.7c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v24.6c0 .8-.7 1.5-1.5 1.5z"></path>
+                            </svg>
                         </label>
                         <label for="newpost-on-off-id" class="newpost-on">
                             <svg aria-label="New Post" class="_8-yf5 " color="#262626" fill="#262626" height="22"
@@ -107,7 +105,7 @@
                     </a>
                 </li>
                 <li class="header__navbar-item isnone">
-                    <a href="" class="header__nabar-link">
+                    <a href="#" class="header__nabar-link">
                         <svg aria-label="Find People" class="_8-yf5 " color="#262626" fill="#262626" height="22"
                              role="img" viewBox="0 0 48 48" width="22">
                             <path clip-rule="evenodd"
@@ -137,11 +135,11 @@
                                 <div class="notifies-inner-o">
                                     <div class="notifies-inner-o__ava">
                                             <span class="notifies-inner-o__ava-1" style="height: 32px; width: 32px;">
-                                                <img src="./asset/img/ava.jpg" alt=""
+                                                <img src="${user.avatar}" alt=""
                                                      style="height: 100%; width: 100%;">
                                             </span>
                                         <span class="notifies-inner-o__ava-2" style="height: 32px; width: 32px;">
-                                                <img src="./asset/img/ava.jpg" alt=""
+                                                <img src="${user.avatar}" alt=""
                                                      style="height: 100%; width: 100%;">
                                             </span>
                                     </div>
@@ -165,7 +163,7 @@
                                         <div class="notifies-inner-u__event-about">
                                             <div class="notifies-inner-u__event-about__ava"
                                                  style="width: 44px; height: 44px; overflow: hidden;">
-                                                <img src="./asset/img/ava.jpg" alt=""
+                                                <img src="${user.avatar}" alt=""
                                                      style="height: 100%; width: 100%;">
                                             </div>
                                             <div class="notifies-inner-u__event-about__name">
@@ -195,7 +193,7 @@
                     <a href="#" class="header__nabar-link">
                         <div class="border-img">
                                 <span class="header__navbar-ava">
-                                    <img class="ava-img" src="./asset/img/ava.jpg" alt="">
+                                    <img class="ava-img" src="${user.avatar}" alt="">
                                 </span>
                         </div>
                     </a>
@@ -214,7 +212,7 @@
                                     <div class="accountfolder-about-content">
                                         <div class="accountfolder-about-content__Profile">
                                             <a style="text-decoration: none;color: #262626"
-                                               href="/user?action=update&id=${user.id}">Profile</a>
+                                               href="/user?action=information&id=${user.id}">Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -313,7 +311,8 @@
                                 <div>thainguyenn__</div>
                             </header>
                             <div class="heading-icon">
-                                        <span class="heading-icon__inner">
+                                <div>
+                                     <span class="heading-icon__inner">
                                             <svg aria-label="More options" class="_8-yf5 " color="#262626"
                                                  fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle
                                                     cx="12" cy="12" r="1.5"></circle><circle cx="6.5" cy="12"
@@ -321,7 +320,41 @@
                                                     cx="17.5" cy="12" r="1.5"></circle>
                                             </svg>
                                         </span>
+                                </div>
 
+                                <!-- selector folder/ thư mục sửa xóa posts -->
+                                <div class="accountfolder">
+                                    <div class="accountfolder-wraper">
+                                        <div class="accountfolder-inner">
+                                            <div class="accountfolder-about btn">
+                                                <div class="accountfolder-about__icon">
+                                                    <!--                                                    <svg aria-label="Profile" class="_8-yf5 " color="#262626" fill="#262626"-->
+                                                    <!--                                                         height="16" role="img" viewBox="0 0 32 32" width="16">-->
+                                                    <!--                                                        <path d="M16 0C7.2 0 0 7.1 0 16c0 4.8 2.1 9.1 5.5 12l.3.3C8.5 30.6 12.1 32 16 32s7.5-1.4 10.2-3.7l.3-.3c3.4-3 5.5-7.2 5.5-12 0-8.9-7.2-16-16-16zm0 29c-2.8 0-5.3-.9-7.5-2.4.5-.9.9-1.3 1.4-1.8.7-.5 1.5-.8 2.4-.8h7.2c.9 0 1.7.3 2.4.8.5.4.9.8 1.4 1.8-2 1.5-4.5 2.4-7.3 2.4zm9.7-4.4c-.5-.9-1.1-1.5-1.9-2.1-1.2-.9-2.7-1.4-4.2-1.4h-7.2c-1.5 0-3 .5-4.2 1.4-.8.6-1.4 1.2-1.9 2.1C4.2 22.3 3 19.3 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13c0 3.3-1.2 6.3-3.3 8.6zM16 5.7c-3.9 0-7 3.1-7 7s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 11c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"></path>-->
+                                                    <!--                                                    </svg>-->
+                                                    <img style="height: 16px;width: 16px; font-size: 20px"
+                                                         src="asset/img/editBtn.png">
+                                                </div>
+                                                <div class="accountfolder-about-content">
+                                                    <div class="accountfolder-about-content__Profile">Edit</div>
+                                                </div>
+                                            </div>
+                                            <div class="accountfolder-about btn">
+                                                <div class="accountfolder-about__icon">
+                                                    <!--                                                    <svg aria-label="Saved" class="_8-yf5 " color="#262626" fill="#262626"-->
+                                                    <!--                                                         height="16" role="img" viewBox="0 0 32 32" width="16">-->
+                                                    <!--                                                        <path d="M28.7 32c-.4 0-.8-.2-1.1-.4L16 19.9 4.4 31.6c-.4.4-1.1.6-1.6.3-.6-.2-.9-.8-.9-1.4v-29C1.8.7 2.5 0 3.3 0h25.4c.8 0 1.5.7 1.5 1.5v29c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM4.8 3v23.9l9.4-9.4c.9-.9 2.6-.9 3.5 0l9.4 9.4V3H4.8z"></path>-->
+                                                    <!--                                                    </svg>-->
+                                                    <img style="height: 16px;width: 16px; font-size: 20px"
+                                                         src="asset/img/deleteBtn.png">
+                                                </div>
+                                                <div class="accountfolder-about-content">
+                                                    <div class="accountfolder-about-content__Saved">Delete</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div>
 
                                 </div>
@@ -331,7 +364,7 @@
                         <div class="content-main__content">
                             <div class="content-main__content-img">
                                 <img class="content-img"
-                                     src="./asset/img/content1/patrick-tomasso-n-vxsHr9jZA-unsplash.jpg">
+                                     src="./asset/img/patrick-tomasso-n-vxsHr9jZA-unsplash.jpg">
                             </div>
                         </div>
 
@@ -444,7 +477,9 @@
                                 <div>thainguyenn__</div>
                             </header>
                             <div class="heading-icon">
-                                        <span class="heading-icon__inner">
+                                <div>
+                                <span class="heading-icon__inner">
+
                                             <svg aria-label="More options" class="_8-yf5 " color="#262626"
                                                  fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><circle
                                                     cx="12" cy="12" r="1.5"></circle><circle cx="6.5" cy="12"
@@ -452,6 +487,42 @@
                                                     cx="17.5" cy="12" r="1.5"></circle>
                                             </svg>
                                         </span>
+                                </div>
+
+                                <!-- selector folder/ thư mục sửa xóa posts -->
+                                <div class="accountfolder">
+                                    <div class="accountfolder-wraper">
+                                        <div class="accountfolder-inner">
+                                            <div class="accountfolder-about btn">
+                                                <div class="accountfolder-about__icon">
+                                                    <!--                                                    <svg aria-label="Profile" class="_8-yf5 " color="#262626" fill="#262626"-->
+                                                    <!--                                                         height="16" role="img" viewBox="0 0 32 32" width="16">-->
+                                                    <!--                                                        <path d="M16 0C7.2 0 0 7.1 0 16c0 4.8 2.1 9.1 5.5 12l.3.3C8.5 30.6 12.1 32 16 32s7.5-1.4 10.2-3.7l.3-.3c3.4-3 5.5-7.2 5.5-12 0-8.9-7.2-16-16-16zm0 29c-2.8 0-5.3-.9-7.5-2.4.5-.9.9-1.3 1.4-1.8.7-.5 1.5-.8 2.4-.8h7.2c.9 0 1.7.3 2.4.8.5.4.9.8 1.4 1.8-2 1.5-4.5 2.4-7.3 2.4zm9.7-4.4c-.5-.9-1.1-1.5-1.9-2.1-1.2-.9-2.7-1.4-4.2-1.4h-7.2c-1.5 0-3 .5-4.2 1.4-.8.6-1.4 1.2-1.9 2.1C4.2 22.3 3 19.3 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13c0 3.3-1.2 6.3-3.3 8.6zM16 5.7c-3.9 0-7 3.1-7 7s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 11c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"></path>-->
+                                                    <!--                                                    </svg>-->
+                                                    <img style="height: 16px;width: 16px; font-size: 20px"
+                                                         src="asset/img/editBtn.png">
+                                                </div>
+                                                <div class="accountfolder-about-content">
+                                                    <div class="accountfolder-about-content__Profile">Edit</div>
+                                                </div>
+                                            </div>
+                                            <div class="accountfolder-about btn">
+                                                <div class="accountfolder-about__icon">
+                                                    <!--                                                    <svg aria-label="Saved" class="_8-yf5 " color="#262626" fill="#262626"-->
+                                                    <!--                                                         height="16" role="img" viewBox="0 0 32 32" width="16">-->
+                                                    <!--                                                        <path d="M28.7 32c-.4 0-.8-.2-1.1-.4L16 19.9 4.4 31.6c-.4.4-1.1.6-1.6.3-.6-.2-.9-.8-.9-1.4v-29C1.8.7 2.5 0 3.3 0h25.4c.8 0 1.5.7 1.5 1.5v29c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM4.8 3v23.9l9.4-9.4c.9-.9 2.6-.9 3.5 0l9.4 9.4V3H4.8z"></path>-->
+                                                    <!--                                                    </svg>-->
+                                                    <img style="height: 16px;width: 16px; font-size: 20px"
+                                                         src="asset/img/deleteBtn.png">
+                                                </div>
+                                                <div class="accountfolder-about-content">
+                                                    <div class="accountfolder-about-content__Saved">Delete</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="content-main__content">
@@ -565,11 +636,11 @@
                     <div class="content-right__wrapper">
                         <div class="content-right__account">
                             <a class="content-right__account-ava">
-                                <img src="./asset/img/ava.jpg" alt="" class="content-right__account-img">
+                                <img src="${user.avatar}" alt="" class="content-right__account-img">
                             </a>
                             <div class="content-right__account-name">
-                                <div class="content-right__name-acc">thainguyenn__</div>
-                                <div class="content-right__name-real">Thái Nguyễn</div>
+                                <div class="content-right__name-acc">${user.username}</div>
+                                <div class="content-right__name-real">${user.fullName}</div>
                             </div>
                             <button class="btn">Switch</button>
                         </div>

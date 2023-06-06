@@ -2,13 +2,14 @@
   Created by IntelliJ IDEA.
   User: Admin
   Date: 6/5/2023
-  Time: 8:59 AM
+  Time: 4:04 PM
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<html >
+<html>
 <head>
     <title>Profile</title>
     <meta charset="UTF-8">
@@ -22,8 +23,6 @@
     <link rel="stylesheet" href="../asset/css/base.css">
     <link rel="stylesheet" href="../asset/css/responsiveNew.css">
     <link rel="stylesheet" href="../asset/css/home.css">
-
-    <link rel="stylesheet" href="../asset/css/userUpdate.css">
     <link rel="stylesheet" href="../asset/css/userInfor.css">
     <link rel="icon" href="../asset/img/favicon.png">
 
@@ -35,7 +34,7 @@
             <div class="header__navbar-logo">
                 <a href="/home?id=${user.id}" class="header__navbar-logo__link">
                     <div class="header__navbar-logo-img">
-                        <img src="./asset/img/logo.png" alt="">
+                        <img src="../asset/img/logo.png" alt="">
                     </div>
                 </a>
             </div>
@@ -180,7 +179,7 @@
                                                             started following you.
                                                         </span>
                                                 </div>
-                                                <span>6h</span>
+                                                <span>6w</span>
                                             </div>
                                             <div class="btn notifies-inner-u__event-about__btn">Following</div>
                                         </div>
@@ -198,7 +197,7 @@
                     <a href="#" class="header__nabar-link">
                         <div class="border-img">
                                 <span class="header__navbar-ava">
-                                    <img class="ava-img" src="${user.avatar}" alt="">
+                                    <img class="ava-img" src="${user.avatar}" >
                                 </span>
                         </div>
                     </a>
@@ -217,7 +216,7 @@
                                     <div class="accountfolder-about-content">
                                         <div class="accountfolder-about-content__Profile">
                                             <a style="text-decoration: none;color: #262626"
-                                               href="/user?action=update&id=${user.id}">Profile</a>
+                                               href="/user?action=information&id=${user.id}">Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -294,7 +293,7 @@
                         <i class="fas fa-video"></i>
                     </a>
                     <div class="content-mess__left-tp-setting">
-                        <a class="content-mss-isetting" href="/user?action=information&id=${user.id}">
+                        <a class="content-mss-isetting" href="/user?action=update&id=${user.id}">
                             <svg aria-label="New Message" class="_8-yf5 " color="#262626" fill="#262626" height="24"
                                  role="img" viewBox="0 0 44 44" width="24">
                                 <path d="M33.7 44.12H8.5a8.41 8.41 0 01-8.5-8.5v-25.2a8.41 8.41 0 018.5-8.5H23a1.5 1.5 0 010 3H8.5a5.45 5.45 0 00-5.5 5.5v25.2a5.45 5.45 0 005.5 5.5h25.2a5.45 5.45 0 005.5-5.5v-14.5a1.5 1.5 0 013 0v14.5a8.41 8.41 0 01-8.5 8.5z"></path>
@@ -304,10 +303,11 @@
                         </a>
                     </div>
                 </div>
+
                 <div class="content-mess__left-bt">
                     <div class="content-mess__left-bt-a">
                         <div class="content-mess__left-bt-a1">
-                             <img src="${user.avatar}">
+                                 <img src="${user.avatar}">
                         </div>
                     </div>
 
@@ -354,76 +354,30 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="content-mess__right">
                 <div class="header__inner__form">
                     <div class="header__inner__form-login">
                         <div class="header__inner__form-login-logo"
                              style="    margin-bottom: 0; margin-top: 30px;">
-                            Edit Profile
+                            Your Profile
                         </div>
+
+
                         <div class="header__inner__form-inner">
-                            <form action="/user?action=update&id=${user.id}" method="post">
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="url" placeholder="Enter your avatar here"
-                                               id="avatar" name="avatar" value="${user.avatar}">
-                                    </div>
-                                </div>
-
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="password" placeholder="Enter your password here"
-                                               id="passWord" name="password"  value="${user.password}">
-                                    </div>
-                                </div>
 
 
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="text" placeholder="Enter your full-name here"
-                                               id="fullName" name="fullName"  value="${user.fullName}">
-                                    </div>
-                                </div>
-
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="text" placeholder="Enter your number phone here"
-                                               id="numberPhone" name="numberPhone"  value="${user.numberPhone}">
-                                    </div>
-                                </div>
-
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="date" placeholder="Enter your date of birth"
-                                               id="dateOfBirth" name="dateOfBirth"  value="${user.dateOfBirth}">
-                                    </div>
-                                </div>
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="text" placeholder="Enter your favorite here"
-                                               id="favorite" name="favorite"  value="${user.favorite}">
-                                    </div>
-                                </div>
-
-                                <div class="form-inner">
-                                    <div class="form-inner-1">
-                                        <input type="text" placeholder="Enter your address here"
-                                               id="address" name="address"  value="${user.address}">
-                                    </div>
-                                </div>
-
-
-                                <div class="form-inner">
-                                    <button class="btn_login" type="submit"> Submit</button>
-                                </div>
-
-                            </form>
                         </div>
+
+
                     </div>
                     <div class="header__inner__form-register" style="height: 20px">
                         <p>Go to <a href="/home?id=${user.id}"> Home </a></p>
                     </div>
-
+                    <div class="img-user">
+                        <img src="../asset/img/userNope.jpg">
+                    </div>
                 </div>
             </div>
         </div>

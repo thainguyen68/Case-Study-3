@@ -22,6 +22,10 @@ public class UserServlet extends HttpServlet {
             case "create":
                 createGet(request, response);
                 break;
+
+            case "information":
+                informationGet(request, response);
+                break;
             case "update":
                 updateGet(request, response);
                 break;
@@ -59,6 +63,17 @@ public class UserServlet extends HttpServlet {
     private void createPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         userService.save(request);
         response.sendRedirect("/login");
+    }
+
+    private void informationGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+        if (userService.checkById(id)){
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/User/userInfor.jsp");
+            request.setAttribute("user", userService.getById(id));
+            requestDispatcher.forward(request, response);
+        } else {
+            response.sendRedirect("/404.jsp");
+        }
     }
 
     private void updateGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
