@@ -75,7 +75,7 @@
               <div class="form-inner">
                 <div class="form-inner-1">
                   <input type="date" placeholder="Enter your date of birth"
-                         id="dateOfBirth" name="date">
+                         id="dateOfBirth" name="dateOfBirth">
                 </div>
               </div>
 
