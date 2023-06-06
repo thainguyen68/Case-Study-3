@@ -4,17 +4,16 @@ public class Posts {
     private int id;
     private User user;
     private String content;
-    private String img_url;
+    private String imgUrl;
     private int likeCount;
 
     public Posts() {
     }
 
-    public Posts(int id, User user, String content, int likeCount) {
+    public Posts(int id, User user, String content) {
         this.id = id;
         this.user = user;
         this.content = content;
-        this.likeCount = likeCount;
     }
 
     public Posts(User user, String content, int likeCount) {
@@ -27,15 +26,21 @@ public class Posts {
         this.id = id;
         this.user = user;
         this.content = content;
-        this.img_url = img_url;
+        this.imgUrl = img_url;
         this.likeCount = likeCount;
     }
 
-    public Posts(User user, String content, String img_url, int likeCount) {
+    public Posts(User user, String content, String img_url) {
         this.user = user;
         this.content = content;
-        this.img_url = img_url;
-        this.likeCount = likeCount;
+        this.imgUrl = img_url;
+    }
+
+    public Posts(int id, User user, String content, String imgUrl) {
+        this.id = id;
+        this.user = user;
+        this.content = content;
+        this.imgUrl = imgUrl;
     }
 
     public int getId() {
@@ -71,10 +76,10 @@ public class Posts {
     }
 
     public String getImg_url() {
-        return img_url;
+        return imgUrl;
     }
 
     public void setImg_url(String img_url) {
-        this.img_url = img_url;
+        this.imgUrl = img_url;
     }
 }

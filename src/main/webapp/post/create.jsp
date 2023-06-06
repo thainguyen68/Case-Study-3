@@ -12,6 +12,15 @@
     <title>Title</title>
 </head>
 <body>
-
+<table>
+    <form action="/posts?action=create&&userId=${userLogging.id}" method="post">
+        <p>Nhập bài post</p>
+        Nhập bài viết
+        <input type="text" name="content">
+        Nhập link ảnh
+        <input type="text" name="imgUrl">
+        <button type="submit">Đăng</button>
+    </form>
+</table>
 </body>
 </html>

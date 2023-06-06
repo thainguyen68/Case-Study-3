@@ -26,17 +26,16 @@ public class PostsService {
         return postsDAO.findAll();
     }
     public void save(HttpServletRequest request) {
-        String id = request.getParameter("id");
+        String id = request.getParameter("postId");
         String content = request.getParameter("content");
-        String img_url = request.getParameter("img_url");
+        String img_url = request.getParameter("imgUrl");
         int userId = Integer.parseInt(request.getParameter("userId"));
         User user = userService.getById(userId);
-        int likeCount = Integer.parseInt("likecount");
         if (id != null) {
             int idUpdate = Integer.parseInt(id);
-            postsDAO.updatePost(new Posts(idUpdate, user,content,img_url, likeCount));
+            postsDAO.updatePost(new Posts(idUpdate, user,content,img_url));
         } else {
-            postsDAO.addPost(new Posts(user, content, img_url, likeCount));
+            postsDAO.addPost(new Posts(user, content, img_url));
         }
     }
     public Posts getById(int id) {

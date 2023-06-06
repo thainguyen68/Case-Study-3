@@ -83,12 +83,14 @@
                     <a href="" class="header__nabar-link">
                         <input type="checkbox" hidden class="newpost-on-off" id="newpost-on-off-id">
                         <label for="newpost-on-off-id" class="newpost-off">
-                            <svg aria-label="New Post" class="_8-yf5 " color="#262626" fill="#262626" height="22"
-                                 role="img" viewBox="0 0 48 48" width="22">
-                                <path d="M31.8 48H16.2c-6.6 0-9.6-1.6-12.1-4C1.6 41.4 0 38.4 0 31.8V16.2C0 9.6 1.6 6.6 4 4.1 6.6 1.6 9.6 0 16.2 0h15.6c6.6 0 9.6 1.6 12.1 4C46.4 6.6 48 9.6 48 16.2v15.6c0 6.6-1.6 9.6-4 12.1-2.6 2.5-5.6 4.1-12.2 4.1zM16.2 3C10 3 7.8 4.6 6.1 6.2 4.6 7.8 3 10 3 16.2v15.6c0 6.2 1.6 8.4 3.2 10.1 1.6 1.6 3.8 3.1 10 3.1h15.6c6.2 0 8.4-1.6 10.1-3.2 1.6-1.6 3.1-3.8 3.1-10V16.2c0-6.2-1.6-8.4-3.2-10.1C40.2 4.6 38 3 31.8 3H16.2z"></path>
-                                <path d="M36.3 25.5H11.7c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h24.6c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5z"></path>
-                                <path d="M24 37.8c-.8 0-1.5-.7-1.5-1.5V11.7c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v24.6c0 .8-.7 1.5-1.5 1.5z"></path>
-                            </svg>
+                            <a href="/posts?action=create">
+                                <svg aria-label="New Post" class="_8-yf5 " color="#262626" fill="#262626" height="22"
+                                     role="img" viewBox="0 0 48 48" width="22">
+                                    <path d="M31.8 48H16.2c-6.6 0-9.6-1.6-12.1-4C1.6 41.4 0 38.4 0 31.8V16.2C0 9.6 1.6 6.6 4 4.1 6.6 1.6 9.6 0 16.2 0h15.6c6.6 0 9.6 1.6 12.1 4C46.4 6.6 48 9.6 48 16.2v15.6c0 6.6-1.6 9.6-4 12.1-2.6 2.5-5.6 4.1-12.2 4.1zM16.2 3C10 3 7.8 4.6 6.1 6.2 4.6 7.8 3 10 3 16.2v15.6c0 6.2 1.6 8.4 3.2 10.1 1.6 1.6 3.8 3.1 10 3.1h15.6c6.2 0 8.4-1.6 10.1-3.2 1.6-1.6 3.1-3.8 3.1-10V16.2c0-6.2-1.6-8.4-3.2-10.1C40.2 4.6 38 3 31.8 3H16.2z"></path>
+                                    <path d="M36.3 25.5H11.7c-.8 0-1.5-.7-1.5-1.5s.7-1.5 1.5-1.5h24.6c.8 0 1.5.7 1.5 1.5s-.7 1.5-1.5 1.5z"></path>
+                                    <path d="M24 37.8c-.8 0-1.5-.7-1.5-1.5V11.7c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5v24.6c0 .8-.7 1.5-1.5 1.5z"></path>
+                                </svg>
+                            </a>
                         </label>
                         <label for="newpost-on-off-id" class="newpost-on">
                             <svg aria-label="New Post" class="_8-yf5 " color="#262626" fill="#262626" height="22"
@@ -211,7 +213,8 @@
                                     </div>
                                     <div class="accountfolder-about-content">
                                         <div class="accountfolder-about-content__Profile">
-                                            <a style="text-decoration: none;color: #262626" href="/user?action=update&id=${user.id}">Profile</a>
+                                            <a style="text-decoration: none;color: #262626"
+                                               href="/user?action=update&id=${user.id}">Profile</a>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +253,7 @@
                                 </div>
                                 <div class="accountfolder-about btn mb-4">
 
-                 <%-----------------------------------Ở ĐÂY XỬ LÝ PẦN LOG-OUT---------------------------------------------------------%>
+                                    <%-----------------------------------Ở ĐÂY XỬ LÝ PẦN LOG-OUT---------------------------------------------------------%>
 
                                     <div class="accountfolder-about__logOut">
                                         <div class="accountfolder-about__logOut-inner">
@@ -298,8 +301,7 @@
                 </div>
 
 
-
-        <%-----------------------------------------xử lý avatar bài viết--Và--phần tên tk--------------------------------------------------%>
+                <%-----------------------------------------xử lý avatar bài viết--Và--phần tên tk--------------------------------------------------%>
 
                 <section class="content-main__wrapper">
                     <div class="content-main__inner">
@@ -320,9 +322,9 @@
                                             </svg>
                                         </span>
 
-                                    <div>
+                                <div>
 
-                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -369,7 +371,7 @@
                             </div>
 
 
-                 <%-------------------------------------------------------------------------------------------------------%>
+                            <%-------------------------------------------------------------------------------------------------------%>
 
                             <div class="about-like">
                                 <!-- --------human-like---------- -->
@@ -642,17 +644,24 @@ const likes = document.querySelectorAll('.like')
 const unlikes = document.querySelectorAll('.unlike')
 const operationItems = document.querySelectorAll('.operation-item-js')
 
-function likeIt () {
-    for(const operationItem of operationItems ){
-        operationItem.classList.remove('liked')}}
-for(const like of likes) {
-    like.addEventListener('click',likeIt)}
+function likeIt() {
+    for (const operationItem of operationItems) {
+        operationItem.classList.remove('liked')
+    }
+}
 
-function unlikeIt () {
-    for(const operationItem of operationItems )
-        operationItem.classList.add('liked')}
-for(const unlike of unlikes) {
-    unlike.addEventListener('click',unlikeIt)}
+for (const like of likes) {
+    like.addEventListener('click', likeIt)
+}
+
+function unlikeIt() {
+    for (const operationItem of operationItems)
+        operationItem.classList.add('liked')
+}
+
+for (const unlike of unlikes) {
+    unlike.addEventListener('click', unlikeIt)
+}
 </script>
 </body>
 </html>

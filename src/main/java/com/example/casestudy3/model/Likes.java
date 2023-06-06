@@ -19,9 +19,7 @@ public class Likes {
         this.user = user;
     }
 
-    public Likes(int id, int id1) {
 
-    }
 
 
     public int getId() {

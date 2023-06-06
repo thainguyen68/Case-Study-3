@@ -40,14 +40,20 @@ public class LikesService {
         return likesDAO.displayCount(postsId);
     }
 
-    public void likes(HttpServletRequest request, int userId, int postId) {
-        Likes newLike = new Likes(userId, postId);
-        Likes likes = likesDAO.findByUserAndPost(newLike);
+    public void likes(HttpServletRequest request) {
+        int userId =Integer.parseInt(request.getParameter("userId"));
+        int postId =Integer.parseInt(request.getParameter("postId"));
+//        Likes newLike = new Likes(userId,postId);
+        Likes likes = likesDAO.findByUserAndPost(userId,postId);
         if (likes != null) {
-            int idDelete = likes.getId();
+            int idDelete = userId;
             likesDAO.deleteLike(idDelete);
         } else {
-            likesDAO.createLike(newLike);
+            likesDAO.createLike(new Likes());
         }
+    }
+    public boolean checkById(int id) {
+        Likes likes = likesDAO.findById(id);
+        return likes != null;
     }
 }
