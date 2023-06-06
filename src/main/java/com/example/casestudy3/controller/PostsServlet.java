@@ -55,7 +55,7 @@ public class PostsServlet extends HttpServlet {
     }
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("posts", postsService.getPost());
+        request.setAttribute("posts", postsService.getAllPost());
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/post/test.jsp");
         requestDispatcher.forward(request, response);
     }
@@ -69,7 +69,7 @@ public class PostsServlet extends HttpServlet {
         int userId = Integer.parseInt(request.getParameter("userId"));
         if (userService.checkById(userId)) {
             postsService.save(request);
-            request.setAttribute("posts", postsService.getPost());
+            request.setAttribute("posts", postsService.getAllPost());
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/post/test.jsp");
             requestDispatcher.forward(request, response);
         } else {

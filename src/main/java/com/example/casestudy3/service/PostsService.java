@@ -22,6 +22,10 @@ public class PostsService {
         }
         return postsService;
     }
+    public List<Posts> getAllPost() {
+        return postsDAO.findAllPosts();
+    }
+
     public List<Posts> getPost() {
         return postsDAO.findAll();
     }

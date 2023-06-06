@@ -28,9 +28,13 @@ public class LikesDAO {
     private final String FIND_BY_USER_AND_POST = "select * from likes where user_id = ? and posts_id = ?";
     private final String SELECT_BY_ID = "select * from likes where id = ?;";
 
+
     public LikesDAO() {
         connection = MyConnection.getConnection();
     }
+
+
+
 
     public List<Likes> displayUser() {
         List<Likes> likesList = new ArrayList<>();

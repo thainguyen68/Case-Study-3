@@ -20,10 +20,37 @@ public class PostsDAO {
     private final String SELECT_BY_ID = "select * from posts where id = ?;";
     private final String UPDATE_BY_ID = "update posts set content = ?,img_posts=? where id = ?;";
     private final String DELETE_BY_ID = "delete from posts where id = ?";
+    private final  String SELECT_ALL_POSTS = "select posts.*,  count(likes.user_id) as likeCounts from posts join likes on posts.id = likes.posts_id group by likes.posts_id;";
+
+
 
     public PostsDAO() {
         connection = MyConnection.getConnection();
     }
+
+
+    public List<Posts> findAllPosts() {
+        List<Posts> posts = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_POSTS)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int userId = resultSet.getInt("user_id");
+                User user = userService.getById(userId);
+                String img_url = resultSet.getString("img_posts");
+                String content = resultSet.getString("content");
+                int likeCount = resultSet.getInt("likeCounts");
+                Posts post = new Posts(id, user, content, img_url,likeCount);
+                posts.add(post);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return posts;
+    }
+
+
+
     public List<Posts> findAll() {
         List<Posts> posts = new ArrayList<>();
         try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL)) {
@@ -59,7 +86,7 @@ public class PostsDAO {
             String content = resultSet.getString("content");
             String img_url = resultSet.getString("img_posts");
             int likeCount = resultSet.getInt("like_count");
-            Posts posts = new Posts(id, user, content, img_url, likeCount);
+            Posts posts = new Posts(id, user, content, img_url,likeCount);
             productList.add(posts);
         }
     }
