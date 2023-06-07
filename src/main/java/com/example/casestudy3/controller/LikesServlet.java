@@ -31,13 +31,13 @@ public class LikesServlet extends HttpServlet {
             case "like":
                 like(request, response);
                 break;
-
         }
     }
 
     private void like(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         likesService.likes(request);
-        response.sendRedirect("/post/test.jsp");
+        int id = Integer.parseInt(request.getParameter("id"));
+        response.sendRedirect("/posts?id=" + id);
     }
 }
 

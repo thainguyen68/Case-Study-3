@@ -24,7 +24,7 @@
     <header class="header">
         <nav class="header__navbar">
             <div class="header__navbar-logo">
-                <a href="/home?action&id=${user.id}" class="header__navbar-logo__link">
+                <a href="/home?id=${user.id}" class="header__navbar-logo__link">
                     <div class="header__navbar-logo-img">
                         <img src="./asset/img/logo.png" alt="">
                     </div>
@@ -258,7 +258,12 @@
 
                                     <div class="accountfolder-about__logOut">
                                         <div class="accountfolder-about__logOut-inner">
-                                            <a style="text-decoration: none; color: #8c4343" href="/login">Log Out</a>
+                                            <form action="/login?action=logOut" method="post">
+<%--                                            <a style="text-decoration: none; color: #8c4343" href="/login?action=logOut">Log Out</a>--%>
+                                                <button type="submit" style="color: #8c4343;border: none;background-color: white;">
+                                                    Log Out
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>
@@ -304,16 +309,18 @@
 
                 <%-----------------------------------------xử lý avatar bài viết--Và--phần tên tk--------------------------------------------------%>
 
-<%--                <c:forEach items="${posts}" var="p">--%>
+                <c:forEach items="${posts}" var="p">
                 <section class="content-main__wrapper">
                     <div class="content-main__inner">
+
                         <div class="content-main__heading">
                             <header class="heading-inner">
                                 <div class="heading-inner__ava">
-                                    <img src="" alt="" class="heading-inner__ava-img">
+                                    <img src="${p.user.avatar}" alt="" class="heading-inner__ava-img">
                                 </div>
-                                <div>thainguyenn__</div>
+                                <div>${p.user.username}</div>
                             </header>
+
                             <div class="heading-icon">
                                 <div>
                                      <span class="heading-icon__inner">
@@ -327,55 +334,66 @@
                                 </div>
 
                                 <!-- selector folder/ thư mục sửa xóa posts -->
+                                <c:if test="${userLogging.id==p.user.id}">
                                 <div class="accountfolder">
                                     <div class="accountfolder-wraper">
                                         <div class="accountfolder-inner">
                                             <div class="accountfolder-about btn">
                                                 <div class="accountfolder-about__icon">
-                                                    <!--                                                    <svg aria-label="Profile" class="_8-yf5 " color="#262626" fill="#262626"-->
-                                                    <!--                                                         height="16" role="img" viewBox="0 0 32 32" width="16">-->
-                                                    <!--                                                        <path d="M16 0C7.2 0 0 7.1 0 16c0 4.8 2.1 9.1 5.5 12l.3.3C8.5 30.6 12.1 32 16 32s7.5-1.4 10.2-3.7l.3-.3c3.4-3 5.5-7.2 5.5-12 0-8.9-7.2-16-16-16zm0 29c-2.8 0-5.3-.9-7.5-2.4.5-.9.9-1.3 1.4-1.8.7-.5 1.5-.8 2.4-.8h7.2c.9 0 1.7.3 2.4.8.5.4.9.8 1.4 1.8-2 1.5-4.5 2.4-7.3 2.4zm9.7-4.4c-.5-.9-1.1-1.5-1.9-2.1-1.2-.9-2.7-1.4-4.2-1.4h-7.2c-1.5 0-3 .5-4.2 1.4-.8.6-1.4 1.2-1.9 2.1C4.2 22.3 3 19.3 3 16 3 8.8 8.8 3 16 3s13 5.8 13 13c0 3.3-1.2 6.3-3.3 8.6zM16 5.7c-3.9 0-7 3.1-7 7s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7zm0 11c-2.2 0-4-1.8-4-4s1.8-4 4-4 4 1.8 4 4-1.8 4-4 4z"></path>-->
-                                                    <!--                                                    </svg>-->
-                                                    <img style="height: 16px;width: 16px; font-size: 20px"
+                                                   <img style="height: 16px;width: 16px; font-size: 20px"
                                                          src="asset/img/editBtn.png">
                                                 </div>
                                                 <div class="accountfolder-about-content">
-                                                    <div class="accountfolder-about-content__Profile">Edit</div>
+                                                    <div class="accountfolder-about-content__Profile">
+                                                        <a href="/posts?action=update&&userId=${userLogging.id}&&postId=${p.id}">Edit</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="accountfolder-about btn">
                                                 <div class="accountfolder-about__icon">
-                                                    <!--                                                    <svg aria-label="Saved" class="_8-yf5 " color="#262626" fill="#262626"-->
-                                                    <!--                                                         height="16" role="img" viewBox="0 0 32 32" width="16">-->
-                                                    <!--                                                        <path d="M28.7 32c-.4 0-.8-.2-1.1-.4L16 19.9 4.4 31.6c-.4.4-1.1.6-1.6.3-.6-.2-.9-.8-.9-1.4v-29C1.8.7 2.5 0 3.3 0h25.4c.8 0 1.5.7 1.5 1.5v29c0 .6-.4 1.2-.9 1.4-.2.1-.4.1-.6.1zM4.8 3v23.9l9.4-9.4c.9-.9 2.6-.9 3.5 0l9.4 9.4V3H4.8z"></path>-->
-                                                    <!--                                                    </svg>-->
-                                                    <img style="height: 16px;width: 16px; font-size: 20px"
+                                                 <img style="height: 16px;width: 16px; font-size: 20px"
                                                          src="asset/img/deleteBtn.png">
                                                 </div>
                                                 <div class="accountfolder-about-content">
-                                                    <div class="accountfolder-about-content__Saved">Delete</div>
+                                                    <div class="accountfolder-about-content__Saved">
+                                                        <button type="button" onclick="deleteS(${p.id})">Delete</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                </c:if>
                                 <div>
 
                                 </div>
 
                             </div>
                         </div>
+
+                        <c:if test="${p.imgUrl != ''}">
                         <div class="content-main__content">
                             <div class="content-main__content-img">
                                 <img class="content-img"
-                                     src="./asset/img/patrick-tomasso-n-vxsHr9jZA-unsplash.jpg">
+                                     src="${p.imgUrl}">
                             </div>
                         </div>
+                        </c:if>
+                        <c:if test="${p.imgUrl == ''}">
+                            <div class="status">
+                                 <span STYLE=" font-size: 16px;font-family: 'Roboto';font-weight: 400;display: block;padding: 0 20px;overflow: hidden">
+                                    ${p.content}
+                                </span>
+                            </div>
+                        </c:if>
 
                         <div class="content-main__about">
                             <div class="abut-operation">
                                 <ul class="operation-list">
-                                    <li class="operation-item operation-item-js  liked">
+
+                                    <form action="/likes?action=like&&userId=${userLogging.id}&&postId=${p.id}&&id=${user.id}" method="post">
+                                    <li class="operation-item operation-item-js  Unlike">
+                                        <button type="submit"  style="border: none;background-color: white;">
                                         <svg aria-label="Like" class="_8-yf5 unlike " color="#262626" fill="#262626"
                                              height="24" role="img" viewBox="0 0 48 48" width="24">
                                             <path d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
@@ -384,7 +402,10 @@
                                              height="24" role="img" viewBox="0 0 48 48" width="24">
                                             <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z"></path>
                                         </svg>
+                                        </button>
                                     </li>
+                                    </form>
+
                                     <li class="operation-item">
                                         <svg aria-label="Comment" class="_8-yf5 " color="#262626" fill="#262626"
                                              height="24" role="img" viewBox="0 0 48 48" width="24">
@@ -414,31 +435,31 @@
                                 <!-- --------human-like---------- -->
                                 <div class="total-like">
                                     <div class="avatar-human">
-                                        <img style="width: 20px; height: 20px;" src="./asset/img/ava.jpg" alt="">
+                                        <img style="width: 20px; height: 20px;" src="${p.user.avatar}" alt="">
                                     </div>
                                     <div class="about-human">
                                         about liked
                                         <span>
-                                                    <a href=""> <b>thainguyenn__</b> </a>
+<%--                                                    <a href=""> <b>${p.user.username}</b> </a>--%>
                                                 </span>
                                         and
                                         <a href="">
-                                            <span> <b>100k</b> </span>
+                                            <span> <b>${p.likeCount}</b> </span>
                                         </a>
                                         <b>others</b>
                                     </div>
                                 </div>
                             </div>
                             <div class="about-comment">
-                                <div class="status">
-                                    <span><a href="">thainguyenn__</a></span>
-                                    <span>
-                                                sometimes u will never know the value of a moment until it becomes a memory...
-                                                sometime u think u nearly got everything but it doesn't anything...
-                                                <i class="ti-face-sad"></i>
-                                                Although loved ones are the most precious things...but sometimes they make us suffer the most....
-                                            </span>
-                                </div>
+                                <c:if test="${p.imgUrl != ''}">
+                                    <div class="status">
+                                        <span><a href="">${p.user.username}</a></span>
+                                        <span>
+                                                ${p.content}
+                                        </span>
+                                    </div>
+                                </c:if>
+
                                 <div class="view-cmt">
                                     <a href="">
                                         View 1 comment
@@ -471,7 +492,7 @@
                         </div>
                     </div>
                 </section>
-
+                </c:forEach>
 
 
 <%--                <section class="content-main__wrapper">--%>
@@ -739,6 +760,12 @@ function unlikeIt() {
 
 for (const unlike of unlikes) {
     unlike.addEventListener('click', unlikeIt)
+}
+
+function deleteS(id) {
+    if (confirm("Are you sure?")) {
+        window.location.href = `/posts?action=delete&&id=` + id
+    }
 }
 </script>
 </body>

@@ -13,13 +13,19 @@
 </head>
 <body>
 <table>
+
     <form action="/posts?action=create&&userId=${userLogging.id}" method="post">
-        <p>Nhập bài post</p>
-        Nhập bài viết
-        <input type="text" name="content">
-        Nhập link ảnh
-        <input type="text" name="imgUrl">
-        <button type="submit">Đăng</button>
+
+        <p>Nhập bài post</p><br>
+        <p>Nhập bài viết</p><br>
+        <input type="text" name="content"><br>
+
+
+        <p>Nhập link ảnh</p><br>
+        <input type="url" name="imgUrl" id="imgUrl"><br>
+
+
+        <button type="submit">Submit</button>
     </form>
 </table>
 </body>

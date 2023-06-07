@@ -2,6 +2,7 @@ package com.example.casestudy3.controller;
 
 import com.example.casestudy3.model.User;
 import com.example.casestudy3.service.CommentService;
+import com.example.casestudy3.service.LikesService;
 import com.example.casestudy3.service.PostsService;
 import com.example.casestudy3.service.UserService;
 
@@ -14,6 +15,7 @@ import java.io.IOException;
 public class PostsServlet extends HttpServlet {
     private final PostsService postsService = PostsService.getInstance();
     private final UserService userService = UserService.getInstance();
+    private final LikesService likesService = LikesService.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -55,8 +57,10 @@ public class PostsServlet extends HttpServlet {
     }
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+       int id = Integer.parseInt(request.getParameter("id"));
+       request.setAttribute("user", userService.getById(id));
         request.setAttribute("posts", postsService.getAllPost());
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/post/test.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -70,7 +74,7 @@ public class PostsServlet extends HttpServlet {
         if (userService.checkById(userId)) {
             postsService.save(request);
             request.setAttribute("posts", postsService.getAllPost());
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/post/test.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
             requestDispatcher.forward(request, response);
         } else {
             response.sendRedirect("/404.jsp");

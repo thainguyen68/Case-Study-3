@@ -104,7 +104,7 @@ public class LikesDAO {
     }
 
     public Likes findByUserAndPost(int idUser, int idPosts) {
-        Likes like = new Likes();
+        Likes like = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(FIND_BY_USER_AND_POST)) {
             preparedStatement.setInt(1, idUser);
             preparedStatement.setInt(2, idPosts);

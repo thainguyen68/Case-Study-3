@@ -19,7 +19,10 @@ public class Likes {
         this.user = user;
     }
 
-
+    public Likes(User user, Posts posts) {
+        this.posts = posts;
+        this.user = user;
+    }
 
 
     public int getId() {

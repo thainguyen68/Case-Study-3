@@ -18,8 +18,8 @@
         Nhập nội dung mới
         <input type="text" name="content">
         Nhập link ảnh mới
-        <input type="text" name="imgUrl">
-        <button type="submit">Chỉnh sửa</button>
+        <input type="text" name="imgUrl" value="${post.imgUrl}">
+        <button type="submit"> Edit </button>
     </form>
 </table>
 </body>

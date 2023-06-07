@@ -51,12 +51,14 @@
                 </div>
               </div>
 
+
               <div class="form-inner">
                 <div class="form-inner-1">
                   <input type="password" placeholder="Confirm your password here"
                          id="passWordConfirm" name="passwordConfirm">
                 </div>
               </div>
+
 
               <div class="form-inner">
                 <div class="form-inner-1">

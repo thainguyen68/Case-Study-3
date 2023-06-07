@@ -75,11 +75,11 @@ public class Posts {
         this.likeCount = likeCount;
     }
 
-    public String getImg_url() {
+    public String getImgUrl() {
         return imgUrl;
     }
 
-    public void setImg_url(String img_url) {
-        this.imgUrl = img_url;
+    public void setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
     }
 }

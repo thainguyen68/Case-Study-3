@@ -1,6 +1,7 @@
 package com.example.casestudy3.controller;
 
 import com.example.casestudy3.model.User;
+import com.example.casestudy3.service.PostsService;
 import com.example.casestudy3.service.UserService;
 
 import javax.servlet.*;
@@ -12,6 +13,7 @@ import java.util.List;
 @WebServlet(name = "Login", urlPatterns = "/login")
 public class Login extends HttpServlet {
     private final UserService userService = UserService.getInstance();
+    private final PostsService postsService = PostsService.getInstance();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,7 +30,7 @@ public class Login extends HttpServlet {
             case "login":
                 loginPost(request, response);
                 break;
-            case "loginOut":
+            case "logOut":
                 loginOutPost(request, response);
                 break;
         }
@@ -42,6 +44,7 @@ public class Login extends HttpServlet {
             if (u.getUsername().equals(username) && u.getPassword().equals(password)) {
                 check = true;
                 request.setAttribute("user", u);
+                request.setAttribute("posts", postsService.getAllPost());
                 HttpSession session = request.getSession();
                 session.setAttribute("userLogging",u);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
@@ -52,7 +55,9 @@ public class Login extends HttpServlet {
         }
     }
     private void loginOutPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("/login");
     }
 
 }

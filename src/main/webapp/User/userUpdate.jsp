@@ -260,7 +260,11 @@
 
                                     <div class="accountfolder-about__logOut">
                                         <div class="accountfolder-about__logOut-inner">
-                                            <a style="text-decoration: none; color: #8c4343" href="/login">Log Out</a>
+                                            <form action="/login?action=logOut" method="post">
+                                                <button type="submit" style="color: #8c4343;border: none;background-color: white;">
+                                                    Log Out
+                                                </button>
+                                            </form>
                                         </div>
                                     </div>
                                 </div>

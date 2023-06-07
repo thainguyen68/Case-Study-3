@@ -21,6 +21,8 @@ public class PostsDAO {
     private final String UPDATE_BY_ID = "update posts set content = ?,img_posts=? where id = ?;";
     private final String DELETE_BY_ID = "delete from posts where id = ?";
     private final  String SELECT_ALL_POSTS = "select posts.*,  count(likes.user_id) as likeCounts from posts join likes on posts.id = likes.posts_id group by likes.posts_id;";
+    private final String SELECT_ALL_POSTS1 = "SELECT posts.*, COUNT(likes.id) AS num_likes FROM posts LEFT JOIN likes ON posts.id = likes.posts_id GROUP BY posts.id;";
+    private final  String SELECT_USER_INFORMATION = "select user.avatar, user.username from user join posts on posts.user_id = user.id group by posts.id;";
 
 
 
@@ -29,9 +31,27 @@ public class PostsDAO {
     }
 
 
+//    public List<User> findAllUserPost() {
+//        List<User> userList = new ArrayList<>();
+//        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_INFORMATION)) {
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                String avatar = resultSet.getString("avatar");
+//                String username = resultSet.getString("username");
+//                User user = new User(avatar, username);
+//                userList.add(user);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return userList;
+//    }
+
+
+
     public List<Posts> findAllPosts() {
         List<Posts> posts = new ArrayList<>();
-        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_POSTS)) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_ALL_POSTS1)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 int id = resultSet.getInt("id");
@@ -39,7 +59,7 @@ public class PostsDAO {
                 User user = userService.getById(userId);
                 String img_url = resultSet.getString("img_posts");
                 String content = resultSet.getString("content");
-                int likeCount = resultSet.getInt("likeCounts");
+                int likeCount = resultSet.getInt("num_likes");
                 Posts post = new Posts(id, user, content, img_url,likeCount);
                 posts.add(post);
             }
@@ -48,7 +68,6 @@ public class PostsDAO {
         }
         return posts;
     }
-
 
 
     public List<Posts> findAll() {
@@ -94,7 +113,7 @@ public class PostsDAO {
         try (PreparedStatement preparedStatement = connection.prepareStatement(INSERT_INTO)) {
             preparedStatement.setInt(1, posts.getUser().getId());
             preparedStatement.setString(2, posts.getContent());
-            preparedStatement.setString(3, posts.getImg_url());
+            preparedStatement.setString(3, posts.getImgUrl());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,7 +123,7 @@ public class PostsDAO {
     public void updatePost(Posts posts) {
         try (PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_BY_ID)) {
             preparedStatement.setString(1, posts.getContent());
-            preparedStatement.setString(2, posts.getImg_url());
+            preparedStatement.setString(2, posts.getImgUrl());
             preparedStatement.setInt(3, posts.getId());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {

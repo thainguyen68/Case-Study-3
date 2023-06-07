@@ -12,6 +12,7 @@ import java.util.List;
 
 public class LikesService {
     private static UserService userService;
+    private static PostsService postsService;
     private static LikesService likesService;
     private final LikesDAO likesDAO;
     private UserDAO userDAO;
@@ -21,6 +22,7 @@ public class LikesService {
     private LikesService() {
         likesDAO = new LikesDAO();
         userService = UserService.getInstance();
+        postsService = PostsService.getInstance();
         postsDAO = new PostsDAO();
         userDAO = new UserDAO();
     }
@@ -49,7 +51,9 @@ public class LikesService {
             int idDelete = userId;
             likesDAO.deleteLike(idDelete);
         } else {
-            likesDAO.createLike(new Likes());
+            User user = userService.getById(userId);
+            Posts posts = postsService.getById(postId);
+            likesDAO.createLike(new Likes(user,posts));
         }
     }
     public boolean checkById(int id) {

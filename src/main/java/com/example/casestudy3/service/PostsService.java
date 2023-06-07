@@ -25,7 +25,9 @@ public class PostsService {
     public List<Posts> getAllPost() {
         return postsDAO.findAllPosts();
     }
-
+//    public List<User> getAllUserPost() {
+//        return postsDAO.findAllUserPost();
+//    }
     public List<Posts> getPost() {
         return postsDAO.findAll();
     }

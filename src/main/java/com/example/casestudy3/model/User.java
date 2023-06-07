@@ -66,6 +66,11 @@ public class User {
         this.address = address;
     }
 
+    public User(String avatar, String username) {
+        this.avatar = avatar;
+        this.username = username;
+    }
+
     public int getId() {
         return id;
     }
