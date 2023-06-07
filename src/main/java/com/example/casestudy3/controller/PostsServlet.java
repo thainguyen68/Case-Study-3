@@ -74,6 +74,7 @@ public class PostsServlet extends HttpServlet {
         if (userService.checkById(userId)) {
             postsService.save(request);
             request.setAttribute("posts", postsService.getAllPost());
+            request.setAttribute("user", userService.getById(userId));
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
             requestDispatcher.forward(request, response);
         } else {
@@ -81,10 +82,10 @@ public class PostsServlet extends HttpServlet {
         }
     }
 
-    private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        postsService.deleteById(request);
-        response.sendRedirect("/posts");
-
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        int userId = Integer.parseInt(request.getParameter("userId"));
+        postsService.deleteByIdLikeComment(request);
+        response.sendRedirect("/home?id="+userId);
     }
 
     private void updateGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -99,12 +100,14 @@ public class PostsServlet extends HttpServlet {
     }
 
     private void updatePost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         int postId = Integer.parseInt(request.getParameter("postId"));
         int userId = Integer.parseInt(request.getParameter("userId"));
         if (postsService.checkById(postId) && userService.checkById(userId)) {
             postsService.save(request);
-            response.sendRedirect("/posts");
+            response.sendRedirect("/home?id=" + id);
         }
-
     }
+
+
 }

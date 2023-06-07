@@ -45,7 +45,6 @@ public class LikesService {
     public void likes(HttpServletRequest request) {
         int userId =Integer.parseInt(request.getParameter("userId"));
         int postId =Integer.parseInt(request.getParameter("postId"));
-//        Likes newLike = new Likes(userId,postId);
         Likes likes = likesDAO.findByUserAndPost(userId,postId);
         if (likes != null) {
             int idDelete = userId;

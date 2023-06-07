@@ -24,6 +24,8 @@ public class PostsDAO {
     private final String SELECT_ALL_POSTS1 = "SELECT posts.*, COUNT(likes.id) AS num_likes FROM posts LEFT JOIN likes ON posts.id = likes.posts_id GROUP BY posts.id;";
     private final  String SELECT_USER_INFORMATION = "select user.avatar, user.username from user join posts on posts.user_id = user.id group by posts.id;";
 
+    private final String DELETE_LIKE = "delete from likes where posts_id = ?";
+    private final String DELETE_COMMENT = "delete from comment where posts_id = ?";
 
 
     public PostsDAO() {
@@ -31,21 +33,6 @@ public class PostsDAO {
     }
 
 
-//    public List<User> findAllUserPost() {
-//        List<User> userList = new ArrayList<>();
-//        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_USER_INFORMATION)) {
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            while (resultSet.next()) {
-//                String avatar = resultSet.getString("avatar");
-//                String username = resultSet.getString("username");
-//                User user = new User(avatar, username);
-//                userList.add(user);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return userList;
-//    }
 
 
 
@@ -139,5 +126,24 @@ public class PostsDAO {
             e.printStackTrace();
         }
     }
+
+
+    public void deleteLikeByPost(int id) {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_LIKE)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+    public void deleteCommentByPost(int id){
+        try (PreparedStatement preparedStatement = connection.prepareStatement(DELETE_COMMENT)) {
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

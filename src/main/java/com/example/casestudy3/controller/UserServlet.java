@@ -91,9 +91,10 @@ public class UserServlet extends HttpServlet {
         int id = Integer.parseInt(request.getParameter("id"));
         if (userService.checkById(id)) {
             userService.save(request);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
-            request.setAttribute("user", userService.getById(id));
-            requestDispatcher.forward(request,response);
+//            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home?id="+id);
+//            request.setAttribute("user", userService.getById(id));
+//            requestDispatcher.forward(request,response);
+            response.sendRedirect("/home?id="+id);
         } else {
             response.sendRedirect("/404.jsp");
         }

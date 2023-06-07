@@ -321,6 +321,11 @@ html {
     color: var(--text-color);
     line-height: 1.8rem;
 }
+
+
+
+
+
 /* ------------ */
 .newpost-on {display: none;}
 .newpost-on-off:checked ~ .newpost-off {display: none;}

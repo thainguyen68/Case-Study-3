@@ -55,4 +55,12 @@ public class PostsService {
         Posts posts = postsDAO.findById(id);
         return posts != null;
     }
+
+
+    public void deleteByIdLikeComment(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+//        postsDAO.deleteCommentByPost(id);
+        postsDAO.deleteLikeByPost(id);
+        postsDAO.deleteById(id);
+    }
 }
