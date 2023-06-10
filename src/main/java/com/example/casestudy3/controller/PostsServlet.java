@@ -11,11 +11,12 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet(name = "PostsServlet", value = "/posts")
+@WebServlet(name = "PostsServlet", urlPatterns = "/posts")
 public class PostsServlet extends HttpServlet {
     private final PostsService postsService = PostsService.getInstance();
     private final UserService userService = UserService.getInstance();
     private final LikesService likesService = LikesService.getInstance();
+    private final CommentService commentService =CommentService.getInstance();
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
@@ -57,8 +58,11 @@ public class PostsServlet extends HttpServlet {
     }
 
     private void findAll(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       int id = Integer.parseInt(request.getParameter("id"));
-       request.setAttribute("user", userService.getById(id));
+        int id = Integer.parseInt(request.getParameter("id"));
+//        int postId = Integer.parseInt(request.getParameter("postId"));
+//        request.setAttribute("comments", commentService.getByIdPost(postId));
+        request.setAttribute("comments", commentService.getComment());
+        request.setAttribute("user", userService.getById(id));
         request.setAttribute("posts", postsService.getAllPost());
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
         requestDispatcher.forward(request, response);
@@ -75,6 +79,7 @@ public class PostsServlet extends HttpServlet {
             postsService.save(request);
             request.setAttribute("posts", postsService.getAllPost());
             request.setAttribute("user", userService.getById(userId));
+            request.setAttribute("comments", commentService.getComment());
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
             requestDispatcher.forward(request, response);
         } else {

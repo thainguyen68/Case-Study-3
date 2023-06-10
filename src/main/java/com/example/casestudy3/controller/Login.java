@@ -1,6 +1,7 @@
 package com.example.casestudy3.controller;
 
 import com.example.casestudy3.model.User;
+import com.example.casestudy3.service.CommentService;
 import com.example.casestudy3.service.PostsService;
 import com.example.casestudy3.service.UserService;
 
@@ -14,6 +15,8 @@ import java.util.List;
 public class Login extends HttpServlet {
     private final UserService userService = UserService.getInstance();
     private final PostsService postsService = PostsService.getInstance();
+    private final CommentService commentService =CommentService.getInstance();
+
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -45,13 +48,14 @@ public class Login extends HttpServlet {
                 check = true;
                 request.setAttribute("user", u);
                 request.setAttribute("posts", postsService.getAllPost());
+                request.setAttribute("comments", commentService.getComment());
                 HttpSession session = request.getSession();
                 session.setAttribute("userLogging",u);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/home.jsp");
                 requestDispatcher.forward(request, response);
             }
         }if (!check){
-                response.sendRedirect("/404.jsp");
+                response.sendRedirect("/4041.jsp");
         }
     }
     private void loginOutPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

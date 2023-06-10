@@ -296,9 +296,69 @@
                                 <div class="story-container">
                                     <button class="story-about">
                                             <span class="story-about-inner">
-                                                <img src="./asset/img/ava.jpg" alt="" class="story-img">
+                                                <img src="./asset/img/duong.jpg" alt="" class="story-img">
                                             </span>
-                                        <div class="story-of">thainguyenn__</div>
+                                        <div class="story-of">duongpham__</div>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="slider__story-item">
+                                <div class="story-container">
+                                    <button class="story-about">
+                                            <span class="story-about-inner">
+                                                <img src="./asset/img/patrick-tomasso-n-vxsHr9jZA-unsplash.jpg" alt="" class="story-img">
+                                            </span>
+                                        <div class="story-of">nguyennn__</div>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="slider__story-item">
+                                <div class="story-container">
+                                    <button class="story-about">
+                                            <span class="story-about-inner">
+                                                <img src="./asset/img/code.png" alt="" class="story-img">
+                                            </span>
+                                        <div class="story-of">dungpham</div>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="slider__story-item">
+                                <div class="story-container">
+                                    <button class="story-about">
+                                            <span class="story-about-inner">
+                                                <img src="./asset/img/thai2.jpg" alt="" class="story-img">
+                                            </span>
+                                        <div class="story-of">duongpham__</div>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="slider__story-item">
+                                <div class="story-container">
+                                    <button class="story-about">
+                                            <span class="story-about-inner">
+                                                <img src="./asset/img/astronaut-gigapixel.png" alt="" class="story-img">
+                                            </span>
+                                        <div class="story-of">duongpham__</div>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="slider__story-item">
+                                <div class="story-container">
+                                    <button class="story-about">
+                                            <span class="story-about-inner">
+                                                <img src="./asset/img/1.JPG" alt="" class="story-img">
+                                            </span>
+                                        <div class="story-of">dungpham__</div>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="slider__story-item">
+                                <div class="story-container">
+                                    <button class="story-about">
+                                            <span class="story-about-inner">
+                                                <img src="./asset/img/11.jpg" alt="" class="story-img">
+                                            </span>
+                                        <div class="story-of">dungpham__</div>
                                     </button>
                                 </div>
                             </li>
@@ -465,34 +525,62 @@
                                     </div>
                                 </c:if>
 
-                                <div class="view-cmt">
-                                    <a href="">
-                                        View 1 comment
-                                    </a>
+
+                                <div class="view-cmt-add viewAll-js viewAll123-js viewed" >
+                                    <a class="view ">View comment</a>
+                                    <a class="unView unView123">Close View </a>
+
+    <c:forEach items="${comments}" var="c">
+<%--        <c:if test="${c.posts.id} == ${p.id}">--%>
+            <div class="view-cmt-inner unView" >
+                <div class="avatar-human-cmt">
+                    <img style="width: 20px; height: 20px;" src="${c.user.avatar}">
+                </div>
+                <div class="view-cmt-inner-text">${c.comment}</div>
+
+                <div class="view-cmt-inner-about-human">
+                    <c:if test="${userLogging.id==c.user.id}">
+                        <div class="view-cmt-inner-btn">
+                            <button onclick="deleteSS(${c.id})" type="button">delete</button>
+                            <button type="button"><a href="/comments?action=update&&userId=${userLogging.id}&&commentId=${c.id}&&postId=${p.id}">
+                                edit
+                            </a></button>
+                        </div>
+                    </c:if>
+
+                </div>
+            </div>
+<%--        </c:if>--%>
+
+    </c:forEach>
+
                                 </div>
                             </div>
                             <div class="about-time">
                                 <a href="">
-                                    <time> 5 HOURS AGO</time>
+<%--                                    <time> 5 HOURS AGO</time>--%>
                                 </a>
                             </div>
                             <div class="about-input">
-                                <div class="input-wrapper">
+                                <form action="/comments?action=create&&userId=${userLogging.id}&&postId=${p.id}" method="post">
+                                    <div class="input-wrapper">
                                             <span class="ava-acc-cmt">
                                                 <img src="./asset/img/ava.jpg" alt="" height="24" width="24">
                                             </span>
-                                    <span class="icon-cmt isnone">
+                                        <span class="icon-cmt isnone">
                                                 <svg aria-label="Emoji" class="_8-yf5 " color="#262626" fill="#262626"
                                                      height="24" role="img" viewBox="0 0 48 48" width="24"><path
                                                         d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z"></path><path
                                                         d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z"></path>
                                                 </svg>
                                             </span>
-                                    <div class="input-add">
-                                        <input type="text" placeholder="Add a comment...">
-                                        <button class="btn">post</button>
+                                        <div class="input-add">
+                                            <input type="text" name="comment" placeholder="Add a comment...">
+                                            <button class="btn">post</button>
+                                        </div>
+
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -503,7 +591,7 @@
 
 
             </div>
-            <div class="empty">
+            <div class="empty unView123">
                 <aside class="content-right">
                     <div class="content-right__wrapper">
                         <div class="content-right__account">
@@ -528,6 +616,26 @@
                                     </div>
                                     <div class="content-right__suggestions-name">
                                         <div class="content-right__suggestions-name__acc">thaine_</div>
+                                        <div class="content-right__suggestions-about">Suggested for you</div>
+                                    </div>
+                                    <button class="btn">Follow</button>
+                                </div>
+                                <div class="content-right__suggestions-inner">
+                                    <div class="content-right__suggestions-ava">
+                                        <img class="content-right__suggestions-img" src="./asset/img/duong.jpg" alt="">
+                                    </div>
+                                    <div class="content-right__suggestions-name">
+                                        <div class="content-right__suggestions-name__acc">duongSoVo_</div>
+                                        <div class="content-right__suggestions-about">Suggested for you</div>
+                                    </div>
+                                    <button class="btn">Follow</button>
+                                </div>
+                                <div class="content-right__suggestions-inner">
+                                    <div class="content-right__suggestions-ava">
+                                        <img class="content-right__suggestions-img" src="./asset/img/userNope.jpg" alt="">
+                                    </div>
+                                    <div class="content-right__suggestions-name">
+                                        <div class="content-right__suggestions-name__acc">dung-Sleep--</div>
                                         <div class="content-right__suggestions-about">Suggested for you</div>
                                     </div>
                                     <button class="btn">Follow</button>
@@ -612,6 +720,57 @@ function deleteS(id,userId) {
     }
 }
 
+function deleteSS(id) {
+    if (confirm("Are you sure?")) {
+        window.location.href = `http://localhost:8080/comments?action=delete&&id=` + id
+    }
+}
+</script>
+
+
+<script> // đóng bảng bằng id
+    const showButton = document.getElementById('showButton');
+    const myTable = document.getElementById('myTable');
+
+    showButton.addEventListener('click', function() {
+        if (myTable.style.display === 'none') {
+            myTable.style.display = 'block';
+            showButton.textContent = 'Close view';
+        } else {
+            myTable.style.display = 'none';
+            showButton.textContent = 'View comment';
+        }
+    });
+</script>
+
+
+
+<script> // dong bang bang class
+    const views = document.querySelectorAll('.view')
+    const viewAlls = document.querySelectorAll('.viewAll-js')
+
+    const viewAll123s = document.querySelectorAll('.viewAll123-js')
+    const unView123s = document.querySelectorAll('.unView123')
+
+    function viewIt() {
+        for (const viewAll of viewAlls) {
+            viewAll.classList.remove('viewed')
+        }
+    }
+
+    for (const view of views) {
+        view.addEventListener('click', viewIt)
+    }
+    // ----------tach de khi an vao noi dung ko bi dong-------------------->
+
+    function unViewIt() {
+        for (const viewAll123 of viewAll123s)
+            viewAll123.classList.add('viewed')
+    }
+
+    for (const unView123 of unView123s) {
+        unView123.addEventListener('click', unViewIt)
+    }
 </script>
 </body>
 </html>

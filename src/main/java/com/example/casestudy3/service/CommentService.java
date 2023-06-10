@@ -33,7 +33,7 @@ public class CommentService {
         String id = request.getParameter("id");
         int userId = Integer.parseInt(request.getParameter("userId"));
         User user = userService.getById(userId);
-        int postId = Integer.parseInt("postId");
+        int postId = Integer.parseInt(request.getParameter("postId"));
         Posts posts = postsService.getById(postId);
         String comment = request.getParameter("comment");
         if (id != null) {
@@ -46,6 +46,10 @@ public class CommentService {
     public Comment getById(int id) {
         return commentDAO.findById(id);
     }
+        public List<Comment> getByIdPost(int posts_id) {
+        return commentDAO.findByPostsId(posts_id);
+    }
+
     public void deleteById(HttpServletRequest request) {
         int id = Integer.parseInt(request.getParameter("id"));
         commentDAO.deleteById(id);

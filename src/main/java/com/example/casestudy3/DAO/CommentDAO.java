@@ -19,11 +19,12 @@ public class CommentDAO {
     private final UserService userService = UserService.getInstance();
     private final PostsService postsService = PostsService.getInstance();
 
-    private final String INSERT_INTO = "insert into comments(user_id,post_id,comment) value (?,?,?);";
-    private final String SELECT_ALL = "select * from post;";
-    private final String SELECT_BY_ID = "select * from post where id = ?;";
-    private final String UPDATE_BY_ID = "update post set comment = ? where id = ?;";
-    private final String DELETE_BY_ID = "delete from post where id = ?";
+    private final String INSERT_INTO = "insert into comment(user_id,posts_id,content_comment) value (?,?,?);";
+    private final String SELECT_ALL = "select * from comment;";
+    private final String SELECT_BY_ID = "select * from comment where id = ?;";
+    private final String SELECT_BY_POSTS_ID = "select * from comment where posts_id = ?;";
+    private final String UPDATE_BY_ID = "update comment set content_comment = ? where id = ?;";
+    private final String DELETE_BY_ID = "delete from comment where id = ?";
 
     public CommentDAO() {
         connection = MyConnection.getConnection();
@@ -43,9 +44,9 @@ public class CommentDAO {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                int userId = resultSet.getInt("userId");
+                int userId = resultSet.getInt("user_id");
                 User user = userService.getById(userId);
-                int postId = resultSet.getInt("postId");
+                int postId = resultSet.getInt("posts_id");
                 Posts posts = postsService.getById(postId);
                 String comment = resultSet.getString("comment");
                 comments = new Comment(id,user,posts,comment);
@@ -55,17 +56,58 @@ public class CommentDAO {
         }
         return comments;
     }
-    private void convertResultSetToList(List<Comment> productList, PreparedStatement preparedStatement) throws SQLException {
+
+
+//    public List<Comment> findByPostsId(int posts_id) {
+//        List<Comment> commentList = new ArrayList<>();
+//        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_POSTS_ID)) {
+//            preparedStatement.setInt(1, posts_id);
+//            ResultSet resultSet = preparedStatement.executeQuery();
+//            while (resultSet.next()) {
+//                int id = resultSet.getInt("id");
+//                int userId = resultSet.getInt("user_id");
+//                User user = userService.getById(userId);
+//                Posts posts = postsService.getById(posts_id);
+//                String comment = resultSet.getString("comment");
+//                Comment comments = new Comment(id, user, posts, comment);
+//                commentList.add(comments);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        return commentList;
+//    }
+
+    public List<Comment> findByPostsId(int posts_id) {
+        List<Comment> commentList = new ArrayList<>();
+        try (PreparedStatement preparedStatement = connection.prepareStatement(SELECT_BY_POSTS_ID)) {
+            preparedStatement.setInt(1, posts_id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int userId = resultSet.getInt("user_id");
+                User user = userService.getById(userId);
+                Posts posts = postsService.getById(posts_id);
+                String comment = resultSet.getString("content_comment");
+                Comment comments = new Comment(id, user, posts, comment);
+                commentList.add(comments);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return commentList;
+    }
+    private void convertResultSetToList(List<Comment> commentList, PreparedStatement preparedStatement) throws SQLException {
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()) {
             int id = resultSet.getInt("id");
-            int userId = resultSet.getInt("userId");
+            int userId = resultSet.getInt("user_id");
             User user = userService.getById(userId);
-            int postId = resultSet.getInt("postId");
+            int postId = resultSet.getInt("posts_id");
             Posts posts = postsService.getById(postId);
-            String comment = resultSet.getString("comment");
+            String comment = resultSet.getString("content_comment");
             Comment comments = new Comment(id, user, posts, comment);
-            productList.add(comments);
+            commentList.add(comments);
         }
     }
     public void addPost(Comment comment) {

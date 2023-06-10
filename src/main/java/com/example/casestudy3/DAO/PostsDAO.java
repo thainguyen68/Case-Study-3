@@ -20,9 +20,7 @@ public class PostsDAO {
     private final String SELECT_BY_ID = "select * from posts where id = ?;";
     private final String UPDATE_BY_ID = "update posts set content = ?,img_posts=? where id = ?;";
     private final String DELETE_BY_ID = "delete from posts where id = ?";
-    private final  String SELECT_ALL_POSTS = "select posts.*,  count(likes.user_id) as likeCounts from posts join likes on posts.id = likes.posts_id group by likes.posts_id;";
     private final String SELECT_ALL_POSTS1 = "SELECT posts.*, COUNT(likes.id) AS num_likes FROM posts LEFT JOIN likes ON posts.id = likes.posts_id GROUP BY posts.id;";
-    private final  String SELECT_USER_INFORMATION = "select user.avatar, user.username from user join posts on posts.user_id = user.id group by posts.id;";
 
     private final String DELETE_LIKE = "delete from likes where posts_id = ?";
     private final String DELETE_COMMENT = "delete from comment where posts_id = ?";

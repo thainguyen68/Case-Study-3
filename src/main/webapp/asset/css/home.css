@@ -881,6 +881,81 @@ mà bạn đã đạt ở các thuộc tính left,right,...  dẫn đến không
 }
 
 
+
+/*---------------------------------------*/
+.view-cmt-inner{
+    display: flex;
+    justify-content: flex-start;
+    padding: 8px 0;
+}
+.view-cmt-inner-about-human {
+    font-weight: 400;
+    line-height: 2.4rem;
+    display: flex;
+}
+.view-cmt-add{
+    margin-bottom: 4px;
+    max-height: 125px;
+    overflow: auto;
+    margin-top: 11px;
+}
+
+.avatar-human-cmt {
+    height: 24px;
+    width: 24px;
+    border: 2px solid rgb(240, 235, 235);
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.view-cmt-inner-text{
+    flex: 4;
+    margin-left: 10px;
+    overflow: hidden;
+}
+
+.view-cmt-inner-btn{
+    font-weight: 400;
+    line-height: 2.4rem;
+    display: flex;
+    flex: 1;
+    justify-content: end;
+}
+
+.view-cmt-inner-btn > button{
+    margin-right: 5px;
+    margin-left: 5px;
+    background-color: white;
+    border: none;
+}
+.view-cmt-inner-btn > button:first-child{
+    color: red;
+    cursor:  pointer;
+}
+
+.view-cmt-inner-btn > button > a{
+    text-decoration: none;
+    color: rgb(52 81 126);
+}
+
+
+.view{
+    display: none;
+}
+
+.viewed .view{
+    display: block;
+}
+.viewed .unView{
+    display: none;
+}
+/*--------------------------------------*/
+
+
+
+
 .about-comment {
     padding: 0 16px;
     font-size: 1.4rem;
